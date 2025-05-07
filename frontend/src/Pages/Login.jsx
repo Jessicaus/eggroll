@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import './Login.css';
 export default function Login() {
     return (
@@ -36,23 +37,26 @@ export default function Login() {
                 </div>
             </form>
         </div>*/
-        <div class="overlay">
+        <div className="overlay">
             <form>
-                <div class="con">
-                    <header class="head-form">
+                <div className="con">
+                    <header className="head-form">
                         <h2>Login</h2>
                         <p>Let's get Egged together!</p>
                     </header>
-                    <div class="other">
-                        <input class="form-input" id="txt-input" type="text" placeholder="@UserName" required />
+                    <div className="other">
+                        <input className="form-input" id="txt-input" type="text" placeholder="Email" required />
                         <br />
-                        <input class="form-input" type="password" placeholder="Password" id="pwd"  name="password" required />
+                        <input className="form-input" type="password" placeholder="Password" id="pwd"  name="password" required />
                         <br />
-                        <button class="log-in"> Log In </button>
+                        <button className="log-in"> Log In </button>
                     </div>
-                <div class="buttons">
+                {/*<div class="buttons">
                     <button class="btn submits frgt-pass">Forgot Password</button>
-                    <button class="btn submits sign-up">Sign Up</button>
+                    <Link to="/signup" className="btn submits sign-up">Sign Up</Link>
+                </div>*/}
+                <div className="signup">
+                    <p>Don’t have an account? <Link to="/signup" className="signup-link">Sign up here</Link></p>
                 </div>
                 </div>
             </form>
