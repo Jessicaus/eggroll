@@ -1,6 +1,24 @@
+import supabase from './supabaseSetup.js';
 // Import the Express library
-const express = require('express');
+import express from 'express'
 const app = express();
+
+// Import Supabase database
+
+const main = async () => { const { data, error } = await supabase.from('users').select('*')
+
+if (error)
+{
+  console.error('Error:', error)
+}
+
+else
+{
+  console.log('Users:', data)
+}
+}
+
+main()
 
 // Import route files (TENTATIVE)
 // const authRoutes = require('./routes/auth');
