@@ -1,0 +1,125 @@
+(1)HTTP Semantics:
+When designing an API contract, it is helpful to understand what you have to work with in HTTP. Typically, we consider the following parts:
+
+1. 
+An endpoint in an API contract is the specific URL (path + HTTP method) that the client uses to interact with the server. Each endpoint defines:
+
+1) The HTTP method (e.g., GET, POST, PUT, DELETE): what we intend to with an endpoint. Typically, one of:
+    a. GET: retrieve/read the resource
+    b. POST: create a resource or update a resource based on its previous value (e.g. increment a number)
+    c. PUT: update the resource independent of its previous value (e.g. set a number)
+    d. DELETE: delete a resource
+
+2) The route/path (e.g., /api/events, /api/attendance/:eventId)
+
+
+3) The purpose (e.g., submit attendance, fetch events)
+
+4) What data it expects (request body, headers, etc.)
+
+5) What data it returns (response format)
+
+endpoint: represents a logical resource. For example, /api/profile might represent a given user's profile.
+
+2. URL parameters: options supplied to specify something about the endpoint. For example, GET /api/profile?truncate=true could mean that you want to only retrieve part of a profile.
+
+3.data parameters: options supplied via form data which can be custom. This is used for POST and PUT requests where you want to be able to specifically specify what fields you wish to update. For example, {username: "my cool new username"} could be passed as form data to PUT /api/profile to change my username to "my cool new username".
+
+4. request headers: headers you supply as part of the request. For example, if I want json format, I could specify Content-Type: application/json. Note that this is essentially just a hint to the server; it is up to the server to correctly implement handling headers. Typically, request headers will only be used for passing authorization cookies via Authorization: Bearer [...].
+
+5. response: a status code and optionally some headers or data (see above).
+
+1XX: continue
+2XX: good
+3XX: redirection
+4XX: error because the client did something wrong (e.g. your request is missing data parameters)
+5XX: error because the server ran into something unexpected (e.g. connection to the database suddenly closed)
+
+(2) Example API contract
+Below is a sample API contract. Notice that there is no code. You should not be writing too much code before you have a contract.
+
+POST /api/register
+------------------
+Register a user.
+
+- URL parameters: none
+- data parameters:
+
+    - email: string
+    - username: string
+    - password: string
+    
+- response:
+
+    - 201: successfully created new user
+    - 400: cannot register user with existing username/email
+    - 500: internal server error (e.g. could not connect to database)
+
+POST /api/login
+---------------
+Login a user by setting a cookie.
+
+- URL parameters: none
+- data parameters:
+
+    - email: string
+    - password: string
+    
+- headers:
+
+    - Content-Type: application/json
+
+- response:
+
+    - 200: successful login
+    
+        - headers:
+        
+            - Authorization: Bearer token
+    
+    - 400: invalid authentication
+    - 422: incomplete data parameters
+    - 500: internal server error (e.g. could not connect to database)
+    
+GET /api/profile
+----------------
+Get a user profile, assuming they have logged in.
+
+- URL parameters: none
+- data parameters: none
+- headers:
+
+    - Authorization: Bearer token
+    - Content-Type: application/json
+
+- response:
+
+    - 200: successfully retrieved data
+    
+        - data:
+        
+            - username: string
+    
+    - 401: invalid authentication (missing/invalid cookie)
+    - 500: internal server error (e.g. could not connect to database)
+    
+PUT /api/profile
+----------------
+Edit a user profile, assuming they have logged in.
+
+- URL parameters: none
+- data parameters:
+
+    - username: string
+
+- headers:
+
+    - Authorization: Bearer token
+    - Content-Type: application/json
+
+- response:
+
+    - 200: successfully updated data    
+    - 401: invalid authentication (missing/invalid cookie)
+    - 500: internal server error (e.g. could not connect to database)
+

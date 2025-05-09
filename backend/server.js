@@ -1,6 +1,11 @@
 // Import the Express library
 const express = require('express');
+const cors = require('cors');
+
 const app = express();
+require('dotenv').config();
+app.use(cors({ origin: 'http://localhost:5173' }));
+app.use(express.json());
 
 // Import route files (TENTATIVE)
 // const authRoutes = require('./routes/auth');
@@ -27,3 +32,6 @@ const PORT = 3000;
 app.listen(PORT, () => {
   console.log(`✅ EggRoll backend running at http://localhost:${PORT}`);
 });
+
+const authRoutes = require('./routes/auth');
+app.use('/auth', authRoutes);
