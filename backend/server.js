@@ -2,7 +2,7 @@ import supabase from './supabaseSetup.js';
 // Import the Express library
 import express from 'express';
 
-import cors from 'cors';
+
 import authRoutes from '../routes/authRoutes.js';
 
 const app = express();
@@ -31,7 +31,7 @@ main()
 // const attendanceRoutes = require('./routes/attendance');
 
 // Middleware: lets Express understand JSON in requests
-app.use(cors())
+
 app.use(express.json());
 
 // Route handling (TENTATIVE): send requests to the appropriate file
