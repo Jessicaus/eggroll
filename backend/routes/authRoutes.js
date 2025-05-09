@@ -1,9 +1,9 @@
 //going to add authentication based routes here (login, signup, logout?, and get user info)
 
-const express = require('express');//imports express framework
+import express from 'express';;//imports express framework
 const router = express.Router();//creates a router
-const createUser = require('../../auth/createUser');//captures what is in createUser.js
-const loginUser = require('../../auth/loginUser');//captures what is in loginUser.js
+import createUser from '../../auth/createUser'
+import loginUser from '../../auth/loginUser'
 
 router.post('/register', async (req, res) => {
   try {
