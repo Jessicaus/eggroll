@@ -2,8 +2,8 @@
 
 import express from 'express';;//imports express framework
 const router = express.Router();//creates a router
-import createUser from '../../auth/createUser'
-import loginUser from '../../auth/loginUser'
+import createUser from './../auth/createUser.js'
+import loginUser from './../auth/loginUser.js'
 
 router.post('/register', async (req, res) => {
   try {
