@@ -6,9 +6,9 @@ export default async function loginUser( { email, password }){
         password
     })
 
-    if (error) {
-        return { success: false, error: error.message}
-    }
+    if (error || !data.session) {
+        throw new Error(error?.message || 'Invalid email or password');
+      }
 //if the login was successful, we return a token
     return { success: true, session: data.session, user: data.user}
 }
