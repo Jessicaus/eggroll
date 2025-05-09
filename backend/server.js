@@ -3,7 +3,7 @@ import supabase from './supabaseSetup.js';
 import express from 'express';
 
 
-import authRoutes from '../routes/authRoutes.js';
+import authRoutes from './routes/authRoutes.js';
 
 const app = express();
 
