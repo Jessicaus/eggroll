@@ -4,7 +4,7 @@ import { useState } from "react";
 import './Login.css';
 
 export default function Login() {
-  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [errorMsg, setErrorMsg] = useState('');
 
@@ -15,7 +15,7 @@ export default function Login() {
     const response = await fetch('http://localhost:3000/api/auth/login', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ username, password }),
+      body: JSON.stringify({ email, password }),
     });
 
     const result = await response.json();
@@ -77,9 +77,9 @@ export default function Login() {
                     <p>Let's get Egged together!</p>
                 </header>
                 <div className="other">
-                    <input className="form-input" id="txt-input" type="text" placeholder="Email" required onChange={(e) => {setUsername(e.target.value); console.log("update username");}} />
+                    <input className="form-input" id="txt-input" type="text" placeholder="Email" required onChange={(e) => {setEmail(e.target.value); console.log("update email");}} />
                     <br />
-                    <input className="form-input" type="password" placeholder="Password" id="pwd" required onChange={(e) => {setPassword(e.target.value); console.log("update password∆")}} />
+                    <input className="form-input" type="password" placeholder="Password" id="pwd" required onChange={(e) => {setPassword(e.target.value); console.log("update password")}} />
                     <br />
                     <button type="submit" className="log-in"> Log In </button>
                     
