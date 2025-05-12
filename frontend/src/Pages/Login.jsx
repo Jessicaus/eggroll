@@ -25,6 +25,8 @@ export default function Login() {
     } else {
       alert("Login successful!");
       // Save token/user info or redirect
+      localStorage.setItem('access_token', result.session.access_token);
+      localStorage.setItem('user', JSON.stringify(result.user));
     }
   };
   
