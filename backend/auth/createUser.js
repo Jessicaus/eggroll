@@ -1,6 +1,6 @@
 import supabase from '../../backend/supabaseSetup.js'
 
-export default async function createAccount({ email, password, display_name})
+export default async function createAccount({ email, password, name})
 {
 
     //uses supabase's built-in table for creating users: each user in this table has their email, password, and unique id
@@ -19,7 +19,7 @@ export default async function createAccount({ email, password, display_name})
     const { error: dbError } = await supabase.from('users').insert({
         user_id: userID,
         user_email: email,
-        user_name: display_name
+        user_name: name
 
     })
 
