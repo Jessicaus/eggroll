@@ -1,0 +1,126 @@
+/* Top Navbar Styles */
+.topnav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #FFA94D;
+    padding: 1rem 2rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    border-radius: 5px;
+    height: 10vh; /* Ensuring the navbar's height doesn't exceed 20% of the viewport height */
+    max-height: 10vh; /* Ensure the top nav does not exceed 20% of the screen height */
+    font-family: 'Playfair Display', serif;
+  }
+  
+  .brand {
+    flex: 0 0 30%; /* The brand (Event Tracker) occupies 30% of the width */
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: left;
+  }
+  
+  .nav-buttons {
+    display: flex;
+    justify-content: space-around;
+    flex: 1;
+    align-items: center; /* Vertically center the buttons */
+    height: 100%; /* Ensure the buttons fill the navbar's height */
+  }
+  
+  .nav-btn {
+    padding: 0.5rem 1rem;
+    font-size: 0.4rem;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    max-width: 150px; /* Prevent the buttons from growing too large */
+    margin: 0 10px;
+    height: 40%; /* Ensure the buttons stay within the height limit of the navbar */
+  }
+  
+  .nav-btn:hover {
+    background-color: #0056b3;
+  }
+
+  /* Hide the radio buttons */
+.toggle-radio {
+    display: none;
+  }
+  
+  /* Container to hold the toggle-pill */
+  .toggle-pill-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1; /* Allow this container to take up the remaining space */
+    gap: 0;
+  }
+  
+  /* Style for each pill (label element) */
+  .pill-label {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #fdfdd3;
+    color: #000000;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+    font-family: 'Abel', sans-serif;
+    font-weight: bold;
+    text-align: center;
+    user-select: none;
+    border-width: 1px;
+    border-color:transparent;
+    border-radius: 5px;  /* Remove rounded corners */
+    margin: 0;  /* Remove any margins to make the buttons touch each other */
+  }
+  
+  /* Active pill style */
+  .toggle-radio:checked + .pill-label {
+    background-color: #B0DAA7; /* 8FCB6B*/
+  }
+  
+  /* Optional: change color on hover for unselected pill */
+  .toggle-radio:not(:checked) + .pill-label:hover {
+    border-width: 1px;
+    border-color:#B0DAA7;
+  }
+  
+  /* If the radio button is selected, make it look more active */
+  .toggle-radio:checked + .pill-label:hover {
+    background-color: #B0DAA7;
+    border-width: 1px;
+    border-color:#fdfdd3;
+  }
+  
+  /* Media Queries for Responsive Design */
+  @media (max-width: 768px) {
+    .topnav {
+      flex-direction: column;
+      height: auto;
+      padding: 1rem;
+    }
+  
+    .brand {
+      flex: 0 0 100%; /* On smaller screens, the brand takes full width */
+      text-align: center;
+      margin-bottom: 10px;
+    }
+  
+    .nav-buttons {
+      width: 100%;
+      justify-content: space-around;
+      margin-top: 10px;
+    }
+  
+    .nav-btn {
+      width: auto; /* Allow buttons to shrink if necessary */
+      max-width: 120px; /* Ensure buttons are not too large */
+      margin: 5px;
+    }
+  }
+  

@@ -1,0 +1,25 @@
+.card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: left;
+    background-color: #FFA94D;
+    padding: 2rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    max-height: 10vh; /* Ensure the top nav does not exceed 20% of the screen height */
+    width: 100%;
+    font-family: 'Playfair Display', serif;
+}
+
+.card-form {
+    height: auto;
+}
+
+/* Login title form form */
+.title {
+    font-size: 170%;
+    font-family: 'Playfair Display', serif;
+    color: #000000;
+    margin: 0;
+}

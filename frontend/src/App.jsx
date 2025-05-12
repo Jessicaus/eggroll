@@ -5,6 +5,7 @@ import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Login from './Pages/Login';
 import Register from './Pages/Register';
+import Home from './Pages/Home';
 import CreateEvent from './Pages/CreateEvent';
 import './App.css';
 
@@ -13,6 +14,7 @@ function App() {
     <Routes>
       <Route path="/" element={<Login />} />
       <Route path="/signup" element={<Register />} />
+      <Route path="/home" element={<Home />} />
       <Route path ="/create-event" element = {<CreateEvent />} />
     </Routes>
   )
