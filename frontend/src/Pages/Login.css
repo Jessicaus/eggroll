@@ -206,7 +206,7 @@ input:focus {
 }
 
 .login-link:hover {
-    color: #8bcf83;            /* hover color */
+    color: #fdfdd3;            /* hover color */
     text-decoration: underline;
 }
 
@@ -262,7 +262,6 @@ button, .btn {
 /* buttons hover */
 button:hover, .btn:hover {
     border-color: #fdfdd3;
-    color: #252537;
     transform: translatey(3px);
     box-shadow: none;
 }
