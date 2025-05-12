@@ -1,7 +1,21 @@
 import supabase from './supabaseSetup.js';
 // Import the Express library
-import express from 'express'
+import express from 'express';
+import cors from 'cors';
+
 const app = express();
+
+// Allow requests from your frontend's origin
+app.use(cors({
+  origin: 'http://localhost:5173', // frontend URL
+  credentials: true
+}));
+
+app.use(express.json());
+
+import authRoutes from './routes/authRoutes.js';
+
+app.use('/api/auth', authRoutes); 
 
 // Import Supabase database
 
@@ -27,10 +41,11 @@ main()
 // const attendanceRoutes = require('./routes/attendance');
 
 // Middleware: lets Express understand JSON in requests
-app.use(express.json());
+
+// app.use(express.json());
 
 // Route handling (TENTATIVE): send requests to the appropriate file
-// app.use('/auth', authRoutes);           // /auth/register, /auth/login
+// app.use('/api/auth', authRoutes);           // /auth/register, /auth/login
 // app.use('/orgs', orgRoutes);            // /orgs, /orgs/:id/join, etc.
 // app.use('/events', eventRoutes);        // /events/:id/activate, etc.
 // app.use('/attendance', attendanceRoutes); // /attendance/:eventId

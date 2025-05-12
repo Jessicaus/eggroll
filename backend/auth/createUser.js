@@ -1,6 +1,6 @@
-import supabase from '../../supabaseSetup.js'
+import supabase from '../../backend/supabaseSetup.js'
 
-export async function createAccount({ email, password, display_name})
+export default async function createAccount({ email, password, display_name})
 {
 
     //uses supabase's built-in table for creating users: each user in this table has their email, password, and unique id

@@ -7,6 +7,7 @@
   text-align: center;
 }
 
+/* Logo styles (optional if you still use them) */
 .logo {
   height: 6em;
   padding: 1.5em;
@@ -35,10 +36,33 @@
   }
 }
 
+/* Card styling (optional for future use) */
 .card {
   padding: 2em;
 }
 
 .read-the-docs {
   color: #888;
+}
+
+/* === Your Final Global Styles === */
+
+/* Reset spacing and set full-page background */
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #fff9f0; /* Pale orange background */
+  font-family: Arial, sans-serif;
+}
+
+/* Make sure everything uses border-box sizing */
+* {
+  box-sizing: border-box;
+}
+
+/* Remove unwanted width restriction on root */
+#root {
+  width: 100%;
+  padding: 0;
+  text-align: center;
 }
