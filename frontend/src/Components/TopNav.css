@@ -3,7 +3,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #FFA94D;
+    
     padding: 1rem 2rem;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     position: sticky;
@@ -11,14 +11,56 @@
     border-radius: 5px;
     height: 10vh; /* Ensuring the navbar's height doesn't exceed 20% of the viewport height */
     max-height: 10vh; /* Ensure the top nav does not exceed 20% of the screen height */
+    width: 100%;
     font-family: 'Playfair Display', serif;
   }
-  
-  .brand {
-    flex: 0 0 30%; /* The brand (Event Tracker) occupies 30% of the width */
+
+  .topnav-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    height: 100%;
+  }
+
+  /* Ensure the menu button is hidden by default */
+.menu-logo {
+  display: none;
+}
+
+  /* Show the menu button when the screen is smaller than 768px */
+@media (max-width: 767px) {
+  .menu-logo {
+    display: flex;
+    justify-content: center; /* Horizontally center the image */
+    align-items: center;     /* Vertically center the image */
+    height: 100%;            /* Make the logo container's height 100% of the topnav */
+    padding: 0;              /* Remove any extra padding */
+    flex-shrink: 0;
+    background: transparent; /* Remove background */
+    cursor: pointer;        /* Make it clickable */
+    outline: none;           /* Remove outline for button focus */
+    transition: filter 300ms; /* Smooth transition for hover effect */
+  }
+}
+
+.menu-logo-image {
+  height: 70%;            /* Make the image fill the height of the container */
+  width: auto;             /* Maintain aspect ratio by adjusting width accordingly */
+  max-height: 70%;        /* Ensure the image doesn't overflow its container */
+  transform: translateY(2px); /* Adjust this value as needed */
+  min-height: 2em;
+  transition: filter 300ms;
+}
+
+.menu-logo:hover, .menu-logo-image {
+  filter: drop-shadow(0 0 15px #B0DAA7);
+}
+
+  .brand { /* The brand (Event Tracker) occupies 30% of the width */
     font-size: 1.5rem;
     font-weight: bold;
     text-align: left;
+    color: #FDFDD3;
   }
   
   .nav-buttons {
@@ -33,7 +75,7 @@
     padding: 0.5rem 1rem;
     font-size: 0.4rem;
     background-color: #007bff;
-    color: #fff;
+    color: #FDFDD3;
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -97,30 +139,31 @@
     border-color:#fdfdd3;
   }
   
-  /* Media Queries for Responsive Design */
-  @media (max-width: 768px) {
-    .topnav {
-      flex-direction: column;
-      height: auto;
-      padding: 1rem;
-    }
   
-    .brand {
-      flex: 0 0 100%; /* On smaller screens, the brand takes full width */
-      text-align: center;
-      margin-bottom: 10px;
-    }
-  
-    .nav-buttons {
-      width: 100%;
-      justify-content: space-around;
-      margin-top: 10px;
-    }
-  
-    .nav-btn {
-      width: auto; /* Allow buttons to shrink if necessary */
-      max-width: 120px; /* Ensure buttons are not too large */
-      margin: 5px;
-    }
-  }
-  
+/* search bar */
+.search-container {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.search-input {
+  width: 60%;
+  max-width: 400px;
+  padding: 8px 12px;
+
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  font-family: 'Abel', sans-serif;
+  background-color: #fdfdd3;
+  color: #5E6472;
+  font-size: 1rem;
+  outline: none;
+  transition: all 0.2s ease-in-out;
+}
+
+.search-input:focus {
+  box-shadow: 0 0 0 2px #fdfdd3;
+  background-color: #fefecd;
+}

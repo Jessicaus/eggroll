@@ -1,7 +1,7 @@
 /* Sidebar container styles */
 .sidebar {
-  width: 250px;
-  height: 100vh;
+  width: 30%;
+  height: 100%;
   background-color: #fdfdd3; /* Light grey background */
   border-width: 1px;
   border-radius: 5px;
@@ -15,30 +15,43 @@
 .sidebar-content {
   display: flex;
   flex-direction: column;
+  height: 100%;
   gap: 1rem;
 }
 
 /* Button section styles */
 .button-section {
+  margin-top: auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 
 .new-event-btn {
-  padding: 10px 20px;
-  font-size: 16px;
-  background-color: #B0DAA7; /* Stronger green */
+  border-radius: 8px;
+  border: 1px solid transparent;
+  transition: border-color 0.25s;
+  font-family: inherit;
+  padding: 0.7rem 1rem;
+  font-size: 1em;
+  background-color: rgb(109, 172, 93); /* Stronger green */
   color: #ffffff;
   border: none;
   border-radius: 5px;
   cursor: pointer;
   width: 100%;
   transition: background-color 0.3s ease;
+  white-space: nowrap;
+  font-family: 'Segoe UI', sans-serif;
 }
 
 .new-event-btn:hover {
-  background-color: #6f9c4d; /* Darker shade on hover */
+  background-color: rgb(125, 176, 112); /* Darker shade on hover */
+}
+
+.new-event-btn:focus,
+.new-event-btn:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
 }
 
 /* Radio button section styles */
@@ -92,10 +105,10 @@
     display: flex;
     flex-direction:column;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     width: 100%;
     flex: 1; /* Allow this container to take up the remaining space */
-    gap: 0;
+    gap: 0.5rem;
   }
   
   /* Style for each pill (label element) */
