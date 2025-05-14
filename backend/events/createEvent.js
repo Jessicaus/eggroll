@@ -1,4 +1,4 @@
-import supabase from '../../supabaseSetup.js';
+import supabase from '../../backend/supabaseSetup.js';
 import { v4 as uuidv4 } from 'uuid'; // generates a random ID
 
 export async function createEvent({ scheduler, event_name, event_start_time }) {

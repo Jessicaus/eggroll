@@ -2,7 +2,7 @@ import supabase from './supabaseSetup.js';
 import express from 'express'; // Import the Express library
 import cors from 'cors';
 
-import attendanceRoutes from './routes/attendance.js';
+import attendanceRoutes from './routes/attendanceRoutes.js';
 
 const app = express();
 
@@ -16,8 +16,8 @@ app.use(express.json());
 
 import authRoutes from './routes/authRoutes.js';
 
-app.use('/auth', authRoutes); 
-app.use('/attendance', attendanceRoutes);
+app.use('/api/auth', authRoutes); 
+app.use('/api/attendance', attendanceRoutes);
 
 // Import Supabase database
 
