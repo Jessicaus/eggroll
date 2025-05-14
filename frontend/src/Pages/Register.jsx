@@ -35,7 +35,7 @@ export default function Login() {
                         <p>Start your Egg-roll journey today!</p>
                     </header>
                     <div className="other">
-                        <input className="form-input" type="text" placeholder="Name" value={name} onChange={e => setName(e.target.value)} required />
+                        <input className="form-input" type="text" placeholder="Full Name" value={name} onChange={e => setName(e.target.value)} required />
                         <br />
                         <input className="form-input" type="text" placeholder="Email" value={email} onChange={e => setEmail(e.target.value)} required />
                         <br />
