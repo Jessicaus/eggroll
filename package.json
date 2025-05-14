@@ -1,0 +1,14 @@
+{
+  "name": "fullstack-app",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "server": "cd backend && npm start --silent",
+    "client": "cd frontend && npm run dev --silent",
+    "dev": "concurrently -n SERVER,CLIENT -c green,blue -p name \"npm run server\" \"npm run client\""
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.0"
+  }
+}
+

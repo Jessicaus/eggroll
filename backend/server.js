@@ -20,16 +20,12 @@ app.use('/api/auth', authRoutes);
 // Import Supabase database
 
 const main = async () => { const { data, error } = await supabase.from('users').select('*')
-
-if (error)
-{
-  console.error('Error:', error)
-}
-
-else
-{
-  console.log('Users:', data)
-}
+  if (error){
+    console.error('Error:', error)
+  }
+  else{
+    console.log('Users:', data)
+  }
 }
 
 main()
@@ -58,5 +54,5 @@ app.get('/', (req, res) => {
 // Start the server on port 3000
 const PORT = 3000;
 app.listen(PORT, () => {
-  console.log(`✅ EggRoll backend running at http://localhost:${PORT}`);
+  console.log(`✅EggRoll backend running!`);
 });
