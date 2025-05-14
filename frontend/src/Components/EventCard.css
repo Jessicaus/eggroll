@@ -1,25 +1,80 @@
 .card {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: left;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
     background-color: #FFA94D;
-    padding: 2rem;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     border-radius: 5px;
-    max-height: 10vh; /* Ensure the top nav does not exceed 20% of the screen height */
+    height: 15vh; /* Ensure the top nav does not exceed 20% of the screen height */
     width: 100%;
     font-family: 'Playfair Display', serif;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
 }
 
 .card-form {
-    height: auto;
+  padding: 0;
+  margin-left: auto;
+  width: 70%; /* Limit the size to a maximum of 70% of the parent container */
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center; /* Ensure content is aligned to the top */
+    height: 100%; /* Make sure the card-form takes up the full height of the parent card */
+    max-height: 100%; /* Prevent overflow beyond the parent container */
+    text-overflow: ellipsis;
 }
 
-/* Login title form form */
-.title {
-    font-size: 170%;
+
+/* Left side (clickable area) */
+.clickable-area {
+    flex: 1;
+    cursor: pointer;
+    text-align: left;
+  }
+  
+  .clickable-area .title {
+    font-size: 1.5rem;
     font-family: 'Playfair Display', serif;
     color: #000000;
     margin: 0;
-}
+  }
+  
+  .clickable-area p {
+    font-size: 0.9rem;  /* Reduce the font size for the paragraph */
+    color: #333;        /* Optional: Adjust text color */
+    line-height: 1.4;    /* Optional: Improve line height for readability */
+    margin-top: 2px;     /* Optional: Add space between title and paragraph */
+    margin-bottom: 0;    /* Optional: Remove bottom margin to fit better in the smaller container */
+    word-wrap: break-word;
+  }
+
+  /* Right side (Check In button) */
+  .card-footer {
+    height:100%;
+    width: 15%;
+    display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-left: auto; /* pushes it to the far right */
+  }
+  
+  .checkin-btn {
+    background-color: rgb(109, 172, 93);
+    height:100%;
+    color: #fff;
+    font-family: 'Abel', sans-serif;
+    font-size: 0.9rem;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+  
+  .checkin-btn:hover {
+    background-color: rgb(125, 176, 112);
+  }

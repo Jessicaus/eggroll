@@ -41,7 +41,7 @@ export default function Login() {
                         <br />
                         <input className="form-input" type="password" placeholder="Password" value={password} onChange={e => setPassword(e.target.value)} required />
                         <br />
-                        <button className="log-in"> Sign Up </button>
+                        <button className="log-in btn"> Sign Up </button>
                     </div>
                     <div className="login">
                         <p>&gt; Return to <Link to="/" className="login-link">Login Page</Link></p>

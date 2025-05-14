@@ -26,7 +26,16 @@ opacity: .95;
 /* |||||||||||||||||||||||||||||||||||||||||||||*/
 /* //////////////////////////////////////////// */
 
+.overlay  {
+    display: flex;
+  justify-content: center; /* Centers horizontally */
+  align-items: center; /* Centers vertically */
+  height: 100vh; /* Takes up the entire height of the viewport */
+}
 
+.other {
+    text-align: center; /* Centers inline or inline-block elements like <input> */
+  }
 
 
 /* End body rules */
@@ -41,6 +50,7 @@ form {
     box-shadow: 0 9px 50px hsla(20, 67%, 75%, 0.31);
     padding: 2%;
     background-color: #FFA94D;
+    
     /*background-image: linear-gradient(-225deg, #FDFDD3 50%, #FDFDD3 50%);*/
 }
 /* form Container */
@@ -72,8 +82,6 @@ header h2 {
 }
 /*  A welcome message or an explanation of the login form */
 header p {letter-spacing: 0.05em;}
-
-
 
 /* //////////////////////////////////////////// */
 /* //////////////////////////////////////////// */
@@ -214,7 +222,7 @@ input:focus {
 
 /* input[type="text"] {min-width: 250px;} */
 /* buttons  */
-button, .btn {
+.btn {
     display: inline-block;
     color: #252537;
   
@@ -260,14 +268,14 @@ button, .btn {
 
 
 /* buttons hover */
-button:hover, .btn:hover {
+.btn:hover {
     border-color: #fdfdd3;
     transform: translatey(3px);
     box-shadow: none;
 }
 
 /* buttons hover Animation */
-button:hover, .btn:hover {
+.btn:hover {
     animation: ani9 0.4s ease-in-out infinite alternate;
 }
 @keyframes ani9 {

@@ -83,7 +83,7 @@ export default function Login() {
                     <br />
                     <input className="form-input" type="password" placeholder="Password" id="pwd" required onChange={(e) => {setPassword(e.target.value); console.log("update password")}} />
                     <br />
-                    <button type="submit" className="log-in"> Log In </button>
+                    <button type="submit" className="log-in btn"> Log In </button>
                     
                 </div>
             {/*<div class="buttons">
