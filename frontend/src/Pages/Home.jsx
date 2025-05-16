@@ -16,16 +16,20 @@ export default function Home() {
         setSidebarVisible(!sidebarVisible);
       };
 
+    console.log("fetching user_id")
     useEffect(() => {
         const storedUser = localStorage.getItem("user");
         if (storedUser){
             const user = JSON.parse(storedUser);
             setUserID(user.user_id)
+            console.log("user_id_successfully fetched")
         }
 
-
+        
         
     }, []);
+
+    
 
     useEffect(() => {
         if (!userId) return;
@@ -33,6 +37,7 @@ export default function Home() {
         
         
         async function fetchGeneralEvents() {
+            setLoading(true);
             const today = new Date();
             today.setHours(0, 0, 0, 0);
             const isoToday = today.toISOString();
@@ -51,6 +56,7 @@ export default function Home() {
         }
 
         async function fetchHostedEvents() {
+            setLoading(true);
             const { data, error } = await supabase
                 .from('events')
                 .select('*')
@@ -62,6 +68,7 @@ export default function Home() {
         }
 
         async function fetchAttendedEvents() {
+            setLoading(true);
             const { data, error } = await supabase
                 .from('attendance')
                 .select('*')
@@ -76,6 +83,7 @@ export default function Home() {
             }
 
             const eventIds = data.map( a => a.event_id);
+           
 
             if (eventIds.length === 0) {
                 setEvents([]); // no events attended
@@ -88,7 +96,7 @@ export default function Home() {
                 .in('id', eventIds);
 
             if (eventsError){
-                console.error(eventsEerror);
+                console.error(eventsError);
             }    
             else {
                 setEvents(eventsData);
