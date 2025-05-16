@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Sidebar from "../Components/Sidebar";
 import TopNav from "../Components/TopNav";
 import EventCard from "../Components/EventCard";
-import supabase from "../../supabaseSetup.js"
+import supabase from "./supabaseSetup.js"
 import './Home.css';
 
 export default function Home() {
@@ -10,6 +10,7 @@ export default function Home() {
     const [userId, setUserID] = useState(null);
     const [events, setEvents] = useState([]);
     const [viewType, setViewType] = useState("general");
+    const [loading, setLoading] = useState(true);
 
     const toggleSidebar = () => {
         setSidebarVisible(!sidebarVisible);
@@ -32,12 +33,21 @@ export default function Home() {
         
         
         async function fetchGeneralEvents() {
+            const today = new Date();
+            today.setHours(0, 0, 0, 0);
+            const isoToday = today.toISOString();
+
             const { data, error } = await supabase
                 .from('events')
                 .select('*')
+                .gte('event_start_time', isoToday)
+                .order('event_start_time', {ascending: true});
+
+                
 
             if (error) console.error(error);
             else setEvents(data);
+            setLoading(false);
         }
 
         async function fetchHostedEvents() {
@@ -48,6 +58,7 @@ export default function Home() {
 
             if (error) console.error(error);
             else setEvents(data);
+            setLoading(false);
         }
 
         async function fetchAttendedEvents() {
@@ -81,7 +92,8 @@ export default function Home() {
             }    
             else {
                 setEvents(eventsData);
-            }    
+            } 
+            setLoading(false);   
         }
 
         switch (viewType) {
@@ -103,17 +115,31 @@ export default function Home() {
 
     return (
         <div className="container">
-            <div className="nav">
-                <TopNav toggleSidebar={toggleSidebar}/>
+          <div className="nav">
+            <TopNav toggleSidebar={toggleSidebar} />
+          </div>
+          <div className="content">
+            <Sidebar />
+            <div className="events">
+            <EventCard title="Test Event" startTime={new Date().toISOString()} />
+              <div className="upcoming">Upcoming Events</div>
+    
+              {loading ? (
+                <p>Loading events...</p>
+              ) : events.length === 0 ? (
+                <p>No upcoming events found.</p>
+              ) : (
+                events.map(event => (
+                  <EventCard
+                    key={event.id}
+                    title={event.event_name}
+                    startTime={event.event_start_time}
+                    {...event} // optional: pass all fields if EventCard uses them
+                  />
+                ))
+              )}
             </div>
-            <div className="content">
-                    <Sidebar />
-                <div className="events">
-                    <div className="upcoming">Upcoming Events</div>
-                    <EventCard />
-                    <EventCard />
-                </div>
-            </div>
+          </div>
         </div>
-    );
+      );
 }
