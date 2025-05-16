@@ -3,6 +3,7 @@ import supabase from '../supabaseSetup.js';
 
 const router = express.Router();
 
+// attendance page from frontend will call this to display the attendance table
 router.get('/:eventId', async (req, res) => {
   const { eventId } = req.params;
 
