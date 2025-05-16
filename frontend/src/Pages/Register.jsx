@@ -29,22 +29,24 @@ export default function Login() {
     return (
         <div className="overlay">
             <form onSubmit={handleSubmit}>
-                <div className="con">
-                    <header className="head-form">
-                        <h2>Register</h2>
-                        <p>Start your Egg-roll journey today!</p>
-                    </header>
-                    <div className="other">
-                        <input className="form-input" type="text" placeholder="Full Name" value={name} onChange={e => setName(e.target.value)} required />
-                        <br />
-                        <input className="form-input" type="text" placeholder="Email" value={email} onChange={e => setEmail(e.target.value)} required />
-                        <br />
-                        <input className="form-input" type="password" placeholder="Password" value={password} onChange={e => setPassword(e.target.value)} required />
-                        <br />
-                        <button className="log-in btn"> Sign Up </button>
-                    </div>
-                    <div className="login">
-                        <p>&gt; Return to <Link to="/" className="login-link">Login Page</Link></p>
+                <div className="auth-form">
+                    <div className="con">
+                        <header className="head-form">
+                            <h2>Register</h2>
+                            <p>Start your Egg-roll journey today!</p>
+                        </header>
+                        <div className="other">
+                            <input className="form-input" type="text" placeholder="Full Name" value={name} onChange={e => setName(e.target.value)} required />
+                            <br />
+                            <input className="form-input" type="text" placeholder="Email" value={email} onChange={e => setEmail(e.target.value)} required />
+                            <br />
+                            <input className="form-input" type="password" placeholder="Password" value={password} onChange={e => setPassword(e.target.value)} required />
+                            <br />
+                            <button className="log-in btn"> Sign Up </button>
+                        </div>
+                        <div className="login">
+                            <p>&gt; Return to <Link to="/" className="login-link">Login Page</Link></p>
+                        </div>
                     </div>
                 </div>
             </form>

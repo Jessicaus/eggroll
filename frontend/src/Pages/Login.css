@@ -41,7 +41,8 @@ opacity: .95;
 /* End body rules */
 
 /* Start form  attributes */
-form {
+.auth-form {
+    
     width: 450px;
     min-height: 450px;
     height: auto;
@@ -50,11 +51,10 @@ form {
     box-shadow: 0 9px 50px hsla(20, 67%, 75%, 0.31);
     padding: 2%;
     background-color: #FFA94D;
-    
     /*background-image: linear-gradient(-225deg, #FDFDD3 50%, #FDFDD3 50%);*/
 }
 /* form Container */
-form .con {
+.con {
     display: -webkit-flex;
     display: flex;
     flex-direction: column;

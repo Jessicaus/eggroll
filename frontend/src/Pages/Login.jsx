@@ -73,7 +73,8 @@ export default function Login() {
 
     <div className="overlay">
         <form onSubmit={handleLogin}>
-            <div className="con">
+          <div className="auth-form">
+          <div className="con">
                 <header className="head-form">
                     <h2>Login</h2>
                     <p>Let's get Egged together!</p>
@@ -108,6 +109,8 @@ export default function Login() {
   </div>
 )}
             </div>
+          </div>
+            
         </form>
         </div>);
 
