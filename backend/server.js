@@ -15,9 +15,11 @@ app.use(cors({
 app.use(express.json());
 
 import authRoutes from './routes/authRoutes.js';
+import eventRoutes from './routes/eventRoutes.js';
 
-app.use('/auth', authRoutes); 
-app.use('/attendance', attendanceRoutes);
+app.use('/api/auth', authRoutes); 
+app.use('/api/events', eventRoutes);
+app.use('/api/attendance', attendanceRoutes);
 
 // Import Supabase database
 

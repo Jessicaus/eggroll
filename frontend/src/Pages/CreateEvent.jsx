@@ -3,13 +3,36 @@ import React, { useState, useEffect } from 'react';
 const CreateEvent = () => {
   const [eventName, setEventName] = useState('');
   const [startTime, setStartTime] = useState('');
-  const [attendanceCode, setAttendanceCode] = useState('');
+  //const [attendanceCode, setAttendanceCode] = useState('');
 
-  useEffect(() => {
+  /*useEffect(() => {
     // Auto-generate a 6-digit event code when the page loads
     const code = Math.floor(100000 + Math.random() * 900000).toString();
     setAttendanceCode(code);
-  }, []); // empty dependency array ensures it only runs once
+  }, []);*/ // empty dependency array ensures it only runs once
+
+  const handleCreateEvent = async (e) => {
+    e.preventDefault(); // prevent page reload
+    const response = await fetch('http://localhost:3000/api/events/create', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        name: eventName,
+        start_time: startTime,
+        scheduler: '0cfa6470-6a24-43f6-bc93-37ed23a17c07', // replace with actual scheduler ID or name
+      }),
+    });
+  
+    const data = await response;
+    if (response.ok) {
+      console.log('Event created:', data);
+      alert("Event successful!");
+    } else {
+      const error = await response.json();
+      alert("Error creating event: " + error.message);
+    }
+  };
+
 
     return (
         <div style={{
@@ -19,7 +42,7 @@ const CreateEvent = () => {
             height: '100vh',
             backgroundColor: '#fff9f0'
         }}>
-            <div style={{
+            <form style={{
             border: '2px solid #ffa94d',
             padding: '3rem',
             borderRadius: '16px',
@@ -28,7 +51,9 @@ const CreateEvent = () => {
             boxShadow: '0 8px 16px rgba(255, 165, 0, 0.3)',
             fontFamily: 'Arial, sans-serif',
             textAlign: 'center'
-            }}>
+            }}
+            onSubmit={handleCreateEvent}
+            >
             <h1 style={{
                 marginBottom: '2rem',
                 color: '#ff7300',
@@ -54,6 +79,7 @@ const CreateEvent = () => {
                     borderRadius: '8px',
                     border: '2px solid #ffc078',
                     outline: 'none',
+                    color: '#ff7300',
                     backgroundColor: '#fff'
                 }}
                 />
@@ -76,23 +102,24 @@ const CreateEvent = () => {
                     fontSize: '1rem',
                     borderRadius: '8px',
                     border: '2px solid #ffc078',
+                    color: '#ff7300',
                     outline: 'none',
                     backgroundColor: '#fff'
                 }}
                 />
             </div>
 
-            <p style={{
+            {/*<p style={{
                 marginTop: '2rem',
                 fontSize: '1.2rem',
                 fontWeight: 'bold',
                 color: '#d9480f'
             }}>
                 Attendance Code: <span style={{ color: '#212529' }}>{attendanceCode}</span>
-            </p>
+            </p>*/}
 
             <button
-            onClick={() => console.log({ eventName, startTime, attendanceCode })}
+            onClick={() => console.log({ eventName, startTime})}
             style={{
                 marginTop: '2rem',
                 padding: '0.75rem 1.5rem',
@@ -110,7 +137,7 @@ const CreateEvent = () => {
             Submit
             </button>
 
-            </div>
+            </form>
         </div>
         );
     };
