@@ -1,5 +1,5 @@
 // Inside Login.jsx
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useState } from "react";
 import './Login.css';
 
@@ -7,6 +7,7 @@ export default function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [errorMsg, setErrorMsg] = useState('');
+  const navigate = useNavigate();
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -27,12 +28,9 @@ export default function Login() {
       // Save token/user info or redirect
       localStorage.setItem('access_token', result.session.access_token);
       localStorage.setItem('user', JSON.stringify(result.user));
+      navigate("/home");
     }
   };
-  
-
-
-  
   
   return (
     /*<div className="flex flex-col items-center justify-center min-h-screen">
