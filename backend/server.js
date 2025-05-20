@@ -2,7 +2,7 @@ import supabase from './supabaseSetup.js';
 import express from 'express'; // Import the Express library
 import cors from 'cors';
 
-import attendanceRoutes from './routes/attendance.js';
+import attendanceRoutes from './routes/attendanceRoutes.js';
 
 const app = express();
 
