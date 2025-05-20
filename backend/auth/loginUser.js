@@ -13,8 +13,6 @@ export default async function loginUser( { email, password }){
 
 //if the login was successful, we return a token
     return { success: true, session: data.session, user: data.user}
-
-
 }
 
 

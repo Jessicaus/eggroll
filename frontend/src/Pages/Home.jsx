@@ -1,5 +1,5 @@
 import React, { useState, useEffect} from "react";
-import { supabase } from './supabaseClient.js';
+import { supabase } from '../../supabaseSetup.js';
 import Sidebar from "../Components/Sidebar";
 import TopNav from "../Components/TopNav";
 import EventCard from "../Components/EventCard";
@@ -49,17 +49,16 @@ export default function Home() {
       <div className="content">
         <Sidebar />
         <div className="events">
-        <EventCard title="Test Event" startTime={new Date().toISOString()} />
           <div className="upcoming">Upcoming Events</div>
 
           {loading ? (
             <p>Loading events...</p>
-          ) : events.length === 0 ? (
+          ) : events.length === 0 ? ( 
             <p>No upcoming events found.</p>
           ) : (
             events.map(event => (
               <EventCard
-                key={event.id}
+                eventID={event.id}
                 title={event.event_name}
                 startTime={event.event_start_time}
                 {...event} // optional: pass all fields if EventCard uses them
