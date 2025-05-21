@@ -26,8 +26,9 @@ const { data: event, error: eventError } = await supabase
     }]);
       
     if (insertError) {
-        console.error('Supabase insert error:', JSON.stringify(insertError, null, 2));
-        return { success: false, message: JSON.stringify(insertError) || 'Insert failed' };
+        if (insertError.code === '23505') {
+            return { success: false, message: 'You’ve already checked into this event.' };
+        }
     }
     return { success: true, message: 'Attendance recorded.' };
 }      

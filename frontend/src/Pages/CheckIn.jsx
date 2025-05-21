@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { useAuth } from '../authContext.jsx';
+import { Link, useNavigate } from 'react-router-dom';
 
 const CheckIn = () => {
     const [enteredCode, setEnteredCode] = useState('');
     const { userId, loading } = useAuth();
     const [message, setMessage] = useState('');
+
+    const navigate = useNavigate();
   
     const location = useLocation();
     const queryParams = new URLSearchParams(location.search);
@@ -29,6 +32,12 @@ const CheckIn = () => {
           }),
         });
       
+        const result = await response.json();
+        setMessage(result.message);
+        setTimeout(() => {
+          navigate('/home');
+        }, 1500); // 2000ms = 2 seconds
+
         if (response.ok) {
           const result = await response.json();
           alert(result.message); // e.g., "Checked in!"
