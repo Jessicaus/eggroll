@@ -31,7 +31,7 @@ export default function Home() {
 
       const { data: { user } } = await supabase.auth.getUser();
       if (user) {
-          setUserID(user.user_id);  
+          setUserID(user.id);  
           console.log("user_id successfully fetched from supabase");
       }
 
