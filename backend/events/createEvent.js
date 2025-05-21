@@ -1,23 +1,24 @@
-import supabase from '../../supabaseSetup.js';
-import { v4 as uuidv4 } from 'uuid'; // generates a random ID
+import supabase from '../../backend/supabaseSetup.js';
 
-export async function createEvent({ scheduler, event_name, event_start_time }) {
-    // generate random 6-digit attendance code
-    const code = Math.floor(100000 + Math.random() * 900000).toString();
-    // inserts a new row into the events table
-    const { data, error } = await supabase.from('events').insert({
-        id: uuidv4(),
-        is_live: false,
-        attendance_code: code,
-        event_name,
-        event_start_time,
-        scheduler
-    }).select();
+export default async function createEvent({ name, start_time, description, scheduler }) {
+  const code = Math.floor(100000 + Math.random() * 900000).toString();
+  console.log({ name, start_time, description, scheduler });
 
-    if (error) {
-        console.error('Event creation error:', error);
-        return { success: false, error: error.message };
-    }
+  const { data, error: dbError } = await supabase.from('events').insert({
+    event_start_time: start_time,
+    is_live: false,
+    event_name: name,
+    attendance_code: code,
+    details: description,
+    scheduler: scheduler
+  }).select();
 
-    return { success: true, event: data[0] }; // return the inserted row
+  if (dbError) {
+    throw new Error(dbError?.message || 'database insertion error');
+  }
+
+  const eventId = data[0]?.id;
+  console.log('Event ID:', eventId);
+
+  return { success: true, event: data[0] };
 }
