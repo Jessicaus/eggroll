@@ -20,7 +20,7 @@ export default function Login() {
         if (response.ok) {
             alert("Registration successful!");
             // Redirect or clear form if needed
-            navigate("/home");
+            navigate("/");
         } else {
             const result = await response.json();
             alert("Registration failed: " + result.error); // ✅ WORKS

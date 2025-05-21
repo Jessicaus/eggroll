@@ -1,4 +1,5 @@
 import React, { useState, useEffect} from "react";
+import { useAuth } from '../authContext.jsx';
 import { supabase } from '../../supabaseClient.js';
 import Sidebar from "../Components/Sidebar";
 import TopNav from "../Components/TopNav";
@@ -7,8 +8,9 @@ import './Home.css';
 
 
 export default function Home() {
+    const {userId, loading: authLoading} = useAuth();
     const [sidebarVisible, setSidebarVisible] = useState(false);
-    const [userId, setUserID] = useState(null);
+    //const [userId, setUserID] = useState(null);
     const [events, setEvents] = useState([]);
     const [viewType, setViewType] = useState("general");
     const [loading, setLoading] = useState(true);
@@ -18,7 +20,7 @@ export default function Home() {
   };
 
   
-  useEffect(() => {
+  /*useEffect(() => {
     const initializeAuthSession = async () => {
       const token = localStorage.getItem('access_token');
       const refresh = localStorage.getItem('refresh_token');
@@ -32,19 +34,19 @@ export default function Home() {
       const { data: { user } } = await supabase.auth.getUser();
       if (user) {
           setUserID(user.id);  
-          console.log("user_id successfully fetched from supabase");
+          console.log("user_id successfully fetched from supabase. User ID:", user.id);
+      }
+      else {
+        console.log("No active session in Home.jsx");
       }
 
     };
 
     initializeAuthSession();
-  }, []);
-
-    
-
-  
+  }, []);*/
 
   useEffect(() => {
+    if (!userId) return ;
 
     async function fetchGeneralEvents() {
       setLoading(true);
@@ -88,8 +90,8 @@ export default function Home() {
 
       if (error) {
           console.error(error);
+          setLoading(false);
           return;
-      
       }
 
       const eventIds = data.map( a => a.event_id);
@@ -97,6 +99,7 @@ export default function Home() {
 
       if (eventIds.length === 0) {
           setEvents([]); // no events attended
+          setLoading(false);
           return;
       }
 
@@ -133,17 +136,13 @@ export default function Home() {
 
 }, [userId, viewType]);
 
-
-
-  
-
   return (
     <div className="container">
       <div className="nav">
         <TopNav toggleSidebar={toggleSidebar} />
       </div>
       <div className="content">
-        <Sidebar />
+        <Sidebar viewType={viewType} setViewType={setViewType}/>
         <div className="events">
           <div className="upcoming">Upcoming Events</div>
 
