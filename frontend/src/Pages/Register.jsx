@@ -22,11 +22,10 @@ export default function Login() {
             // Redirect or clear form if needed
             navigate("/");
         } else {
-            const error = await response.json();
-            alert("Registration failed: " + error.message);
+            const result = await response.json();
+            alert("Registration failed: " + result.error); // ✅ WORKS
         }
     };
-
 
     return (
         <div className="overlay">

@@ -9,6 +9,7 @@ import Login from './Pages/Login';
 import Register from './Pages/Register';
 import Home from './Pages/Home';
 import CreateEvent from './Pages/CreateEvent';
+import AttendanceList from './Pages/AttendanceList'
 import CheckIn from './Pages/CheckIn';
 
 import { AuthProvider } from './authContext.jsx';
@@ -23,9 +24,10 @@ function App() {
         <Route path="/signup" element={<Register />} />
         <Route path="/home" element={<Home />} />
         <Route path ="/create" element = {<CreateEvent />} />
+        <Route path="/attendance" element = {<AttendanceList/>} />
         <Route path="/checkin" element={<CheckIn />} />
       </Routes>
-    </AuthProvider>    
+    </AuthProvider>
   )
 }
 
