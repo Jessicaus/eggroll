@@ -19,7 +19,9 @@ export default function Login() {
 
         if (response.ok) {
             alert("Registration successful!");
-            // Redirect or clear form if needed
+            localStorage.setItem('access_token', result.session.access_token);
+            localStorage.setItem('refresh_token', result.session.refresh_token);
+            localStorage.setItem('user', JSON.stringify(result.user));
             navigate("/home");
         } else {
             const result = await response.json();

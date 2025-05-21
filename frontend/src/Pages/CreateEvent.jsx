@@ -32,7 +32,7 @@ const CreateEvent = () => {
 
     if (response.ok) {
       alert("Event created!");
-      navigate('/');
+      navigate("/home");
     } 
     else {
       const result = await response.json();
