@@ -144,12 +144,12 @@ export default function Home() {
       <div className="content">
         <Sidebar viewType={viewType} setViewType={setViewType}/>
         <div className="events">
-          <div className="upcoming">Upcoming Events</div>
+          <div className="upcoming">Events</div>
 
           {loading ? (
             <p>Loading events...</p>
           ) : events.length === 0 ? ( 
-            <p>No upcoming events found.</p>
+            <p>No events found.</p>
           ) : (
             events.map(event => (
               <EventCard
