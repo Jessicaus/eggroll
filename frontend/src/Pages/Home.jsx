@@ -20,7 +20,7 @@ export default function Home() {
   };
 
   
-  /*useEffect(() => {
+  useEffect(() => {
     const initializeAuthSession = async () => {
       const token = localStorage.getItem('access_token');
       const refresh = localStorage.getItem('refresh_token');
@@ -43,7 +43,7 @@ export default function Home() {
     };
 
     initializeAuthSession();
-  }, []);*/
+  }, []);
 
   useEffect(() => {
     if (!userId) return ;
