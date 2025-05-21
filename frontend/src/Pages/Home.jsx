@@ -15,30 +15,111 @@ export default function Home() {
   const toggleSidebar = () => {
     setSidebarVisible(!sidebarVisible);
   };
+
+
+    console.log("fetching user_id")
+    useEffect(() => {
+        const storedUser = localStorage.getItem("user");
+        if (storedUser){
+            const user = JSON.parse(storedUser);
+            setUserID(user.user_id)
+            console.log("user_id_successfully fetched")
+        }
+
+      
+  }, []);
+
   useEffect(() => {
-    const fetchEvents = async () => {
+
+    async function fetchGeneralEvents() {
+      setLoading(true);
       const today = new Date();
       today.setHours(0, 0, 0, 0);
       const isoToday = today.toISOString();
 
       const { data, error } = await supabase
-        .from('events')
-        .select('*')
-        .gte('event_start_time', isoToday)
-        .order('event_start_time', { ascending: true });
+          .from('events')
+          .select('*')
+          .gte('event_start_time', isoToday)
+          .order('event_start_time', {ascending: true});
+
+          
+
+      if (error) console.error(error);
+      else setEvents(data);
+      setLoading(false);
+    }
+
+    async function fetchHostedEvents() {
+      setLoading(true);
+      const { data, error } = await supabase
+          .from('events')
+          .select('*')
+          .eq('scheduler', userId);
+
+      if (error) console.error(error);
+      else setEvents(data);
+      setLoading(false);
+    }
+
+    async function fetchAttendedEvents() {
+      setLoading(true);
+      const { data, error } = await supabase
+          .from('attendance')
+          .select('*')
+          .eq('user_id', userId);
+
+      
 
       if (error) {
-        console.error('Error fetching events:', error.message);
-      } else {
-        setEvents(data);
+          console.error(error);
+          return;
+      
       }
-      console.log("Fetched events:", data);
 
-      setLoading(false);
-    };
+      const eventIds = data.map( a => a.event_id);
+           
 
-    fetchEvents();
-  }, []);
+      if (eventIds.length === 0) {
+          setEvents([]); // no events attended
+          return;
+      }
+
+      const { data: eventsData, error: eventsError } = await supabase
+          .from('events')
+          .select('*')
+          .in('id', eventIds);
+
+      if (eventsError){
+          console.error(eventsError);
+      }    
+      else {
+          setEvents(eventsData);
+      } 
+      setLoading(false); 
+
+
+    }
+
+    switch (viewType) {
+        case "general":
+            fetchGeneralEvents();
+            break;
+        case "hosted":
+            fetchHostedEvents();
+            break;
+        case "attended":
+            fetchAttendedEvents();
+            break;
+        default:
+            fetchGeneralEvents();
+    }
+
+
+}, [userId, viewType]);
+
+
+
   
 
   return (
