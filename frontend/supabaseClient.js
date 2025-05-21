@@ -1,3 +1,5 @@
+// connect supabase to frontend
+
 import { createClient } from '@supabase/supabase-js';
 
 const supabaseUrl = 'https://kndiebwpwawxvcynupkh.supabase.co';

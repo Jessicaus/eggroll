@@ -51,7 +51,7 @@ const TopNav = ({toggleSidebar}) => {
         <button className="menu-logo" onClick={toggleSidebar}>
             <img src="/menu.svg" alt="Logo" className="menu-logo-image" />
         </button>
-        <div className="brand">Event Tracker</div>
+        <div className="brand">Egg Roll: Event Tracker</div>
       </div>
 
       {/*<div className="toggle-pill-container">
