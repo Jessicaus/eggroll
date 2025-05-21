@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { supabase } from '../../supabaseSetup.js';
+import { supabase } from '../../supabaseClient.js';
 
 const CreateEvent = () => {
   const [eventName, setEventName] = useState('');
@@ -11,11 +11,13 @@ const CreateEvent = () => {
   const handleCreateEvent = async (e) => {
     e.preventDefault();
 
-    const { data: { user } } = await supabase.auth.getUser();
-    if (!user) {
-      alert('You must be logged in to create an event.');
+    const storedUser = localStorage.getItem('user');
+    if (!storedUser) {
+      alert("You must be logged in to create an event.");
       return;
     }
+    const user = JSON.parse(storedUser);
+    const userID = user.id;
 
     const response = await fetch('http://localhost:3000/api/events/create', {
       method: 'POST',
@@ -23,17 +25,18 @@ const CreateEvent = () => {
       body: JSON.stringify({
         name: eventName,
         start_time: startTime,
-        description,
-        scheduler: user.id
-      }),
+        description: description,
+        scheduler: userID
+      })      
     });
 
     if (response.ok) {
       alert("Event created!");
       navigate('/');
-    } else {
-      const error = await response.json();
-      alert("Error creating event: " + error.message);
+    } 
+    else {
+      const result = await response.json();
+      alert("Error creating event: " + result.error);
     }
   };
 

@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './EventCard.css';
 
-const EventCard = ({ eventID, title, startTime }) => {
+const EventCard = ({ eventID, title, startTime, description}) => {
   const formattedStart = new Date(startTime).toLocaleString('en-US', {
     hour: 'numeric',
     minute: '2-digit',
@@ -17,8 +17,7 @@ const EventCard = ({ eventID, title, startTime }) => {
         <div className="card-form clickable-area">
           <div className="title">{title}</div>
           <p className="event-start-time">Time: {formattedStart}</p>
-          <p className="event-description">
-            "At vero eos et accusamus et iusto odio dignissimos ducimus..."
+          <p className="event-description">{description}
           </p>
         </div>
         <div className="card-footer">

@@ -1,5 +1,5 @@
 import React, { useState, useEffect} from "react";
-import { supabase } from '../../supabaseSetup.js';
+import { supabase } from '../../supabaseClient.js';
 import Sidebar from "../Components/Sidebar";
 import TopNav from "../Components/TopNav";
 import EventCard from "../Components/EventCard";
@@ -61,6 +61,7 @@ export default function Home() {
                 eventID={event.id}
                 title={event.event_name}
                 startTime={event.event_start_time}
+                description={event.details}
                 {...event} // optional: pass all fields if EventCard uses them
               />
             ))
