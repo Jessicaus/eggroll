@@ -30,6 +30,7 @@ export default function Login() {
       localStorage.setItem('refresh_token', result.session.refresh_token);
       localStorage.setItem('user', JSON.stringify(result.user));
       navigate("/home");
+      window.location.reload();
     }
   };
   

@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
+import { useAuth } from '../authContext.jsx';
 
 const CreateEvent = () => {
+  const { userId, loading } = useAuth();
   const [eventName, setEventName] = useState('');
   const [startTime, setStartTime] = useState('');
   //const [attendanceCode, setAttendanceCode] = useState('');
@@ -13,13 +15,20 @@ const CreateEvent = () => {
 
   const handleCreateEvent = async (e) => {
     e.preventDefault(); // prevent page reload
+
+    if (!userId) {
+      alert("You must be logged in to create an event.");
+      return;
+    }
+    console.log("user id:", userId);
+
     const response = await fetch('http://localhost:3000/api/events/create', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         name: eventName,
         start_time: startTime,
-        scheduler: '0cfa6470-6a24-43f6-bc93-37ed23a17c07', // replace with actual scheduler ID or name
+        scheduler: userId, // replace with actual scheduler ID or name
       }),
     });
   
