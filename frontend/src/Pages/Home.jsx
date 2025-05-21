@@ -8,9 +8,9 @@ import './Home.css';
 
 
 export default function Home() {
-    const {userId, loading: authLoading} = useAuth();
+    //const {userId, loading: authLoading} = useAuth();
     const [sidebarVisible, setSidebarVisible] = useState(false);
-    //const [userId, setUserID] = useState(null);
+    const [userId, setUserID] = useState(null);
     const [events, setEvents] = useState([]);
     const [viewType, setViewType] = useState("general");
     const [loading, setLoading] = useState(true);
