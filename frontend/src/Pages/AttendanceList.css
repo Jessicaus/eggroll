@@ -15,7 +15,7 @@
     width: 90%;
     max-width: 900px;
     box-shadow: 0 8px 16px rgba(255, 165, 0, 0.3);
-    font-family: 'Arial', sans-serif;
+    font-family: 'Avenir', sans-serif;
 }
 
 .event-title {
@@ -23,7 +23,7 @@
     font-size: 2.5rem;
     margin-bottom: 0.5rem;
     text-align: center;
-    font-family: 'Playfair Display', serif;
+    font-family: 'Avenir', serif;
 }
 
 .total-attendees {

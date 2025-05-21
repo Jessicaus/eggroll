@@ -76,7 +76,7 @@ header {
 /* Login title form form */
 header h2 {
     font-size: 350%;
-    font-family: 'Playfair Display', serif;
+    font-family: 'Avenir', serif;
     color: #fdfdd3;
     margin: 0;
 }
@@ -104,7 +104,7 @@ input[class="form-input"]{
     padding: 15px;
     
     font-size: 16px;
-    font-family: 'Abel', sans-serif;
+    font-family: 'Avenir', sans-serif;
     color: #5E6472;
     background-color: #FFE0B2;
   
@@ -158,7 +158,7 @@ input:focus {
 
     margin: 2% auto;
     font-size: 0.9rem;         /* Smaller than buttons */
-    font-family: 'Abel', sans-serif;
+    font-family: 'Avenir', sans-serif;
     color: #252537;
     letter-spacing: 0.05em;
     width: 100%;
@@ -193,7 +193,7 @@ input:focus {
     text-align: right;
     margin: 2% auto;
     font-size: 0.8rem;
-    font-family: 'Abel', sans-serif;
+    font-family: 'Avenir', sans-serif;
     letter-spacing: 0.05em;
     width: 100%;
 }
