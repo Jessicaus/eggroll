@@ -21,19 +21,20 @@ export default function Home() {
   useEffect(() => {
     const initializeAuthSession = async () => {
       const token = localStorage.getItem('access_token');
-      if (token) {
+      const refresh = localStorage.getItem('refresh_token');
+      if (token && refresh) {
         await supabase.auth.setSession({
           access_token: token,
-          refresh_token: '', // optional
+          refresh_token: refresh
         });
       }
 
-      const storedUser = localStorage.getItem("user");
-      if (storedUser) {
-        const user = JSON.parse(storedUser);
-        setUserID(user.user_id);
-        console.log("user_id successfully fetched");
+      const { data: { user } } = await supabase.auth.getUser();
+      if (user) {
+          setUserID(user.user_id);  
+          console.log("user_id successfully fetched from supabase");
       }
+
     };
 
     initializeAuthSession();
