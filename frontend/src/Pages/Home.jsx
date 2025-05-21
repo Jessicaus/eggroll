@@ -5,6 +5,7 @@ import TopNav from "../Components/TopNav";
 import EventCard from "../Components/EventCard";
 import './Home.css';
 
+
 export default function Home() {
     const [sidebarVisible, setSidebarVisible] = useState(false);
     const [userId, setUserID] = useState(null);
@@ -16,18 +17,31 @@ export default function Home() {
     setSidebarVisible(!sidebarVisible);
   };
 
+  
+  useEffect(() => {
+    const initializeAuthSession = async () => {
+      const token = localStorage.getItem('access_token');
+      if (token) {
+        await supabase.auth.setSession({
+          access_token: token,
+          refresh_token: '', // optional
+        });
+      }
 
-    console.log("fetching user_id")
-    useEffect(() => {
-        const storedUser = localStorage.getItem("user");
-        if (storedUser){
-            const user = JSON.parse(storedUser);
-            setUserID(user.user_id)
-            console.log("user_id_successfully fetched")
-        }
+      const storedUser = localStorage.getItem("user");
+      if (storedUser) {
+        const user = JSON.parse(storedUser);
+        setUserID(user.user_id);
+        console.log("user_id successfully fetched");
+      }
+    };
 
-      
+    initializeAuthSession();
   }, []);
+
+    
+
+  
 
   useEffect(() => {
 
