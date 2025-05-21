@@ -12,7 +12,7 @@
     height: 10vh; /* Ensuring the navbar's height doesn't exceed 20% of the viewport height */
     max-height: 10vh; /* Ensure the top nav does not exceed 20% of the screen height */
     width: 100%;
-    font-family: 'Playfair Display', serif;
+    font-family: 'Avenir', serif;
   }
 
   .topnav-header {
@@ -111,7 +111,7 @@
     border-radius: 50px;
     cursor: pointer;
     transition: background-color 0.3s, transform 0.3s;
-    font-family: 'Abel', sans-serif;
+    font-family: 'Avenir', sans-serif;
     font-weight: bold;
     text-align: center;
     user-select: none;
@@ -156,7 +156,7 @@
   font-size: 1rem;
   border: 1px solid #ccc;
   border-radius: 10px;
-  font-family: 'Abel', sans-serif;
+  font-family: 'Avenir', sans-serif;
   background-color: #fdfdd3;
   color: #5E6472;
   font-size: 1rem;
@@ -201,7 +201,7 @@
   border-top: 1px solid #e0e0c0; /* subtle border between items */
   list-style: none;
   cursor: pointer;
-  font-family: 'Abel', sans-serif;
+  font-family: 'Avenir', sans-serif;
   color: #5E6472;
 }
 

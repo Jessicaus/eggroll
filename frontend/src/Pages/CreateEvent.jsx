@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useAuth } from '../authContext.jsx';
 import { useNavigate } from 'react-router-dom';
-import { supabase } from '../../supabaseClient.js';
 
 const CreateEvent = () => {
   const { userId, loading } = useAuth();
