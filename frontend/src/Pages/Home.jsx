@@ -154,6 +154,7 @@ export default function Home() {
           ) : (
             events.map(event => (
               <EventCard
+                key={event.id}
                 eventID={event.id}
                 title={event.event_name}
                 startTime={event.event_start_time}
