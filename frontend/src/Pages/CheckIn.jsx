@@ -37,6 +37,17 @@ const CheckIn = () => {
         setTimeout(() => {
           navigate('/home');
         }, 1500); // 2000ms = 2 seconds
+
+        if (response.ok) {
+          const result = await response.json();
+          alert(result.message); // e.g., "Checked in!"
+          setMessage(result.message);
+        } else {
+          // Read plain text if response is HTML (e.g., error page)
+          const text = await response.text();
+          console.error("Check-in failed:", text);
+          setMessage("Check-in failed: " + text);
+        }
     };      
   
     return (
