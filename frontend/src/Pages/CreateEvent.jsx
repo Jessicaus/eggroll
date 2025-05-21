@@ -1,23 +1,23 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useAuth } from '../authContext.jsx';
 import { useNavigate } from 'react-router-dom';
 import { supabase } from '../../supabaseClient.js';
 
 const CreateEvent = () => {
+  const { userId, loading } = useAuth();
   const [eventName, setEventName] = useState('');
   const [startTime, setStartTime] = useState('');
   const [description, setDescription] = useState('');
   const navigate = useNavigate();
 
   const handleCreateEvent = async (e) => {
-    e.preventDefault();
+    e.preventDefault(); // prevent page reload
 
-    const storedUser = localStorage.getItem('user');
-    if (!storedUser) {
+    if (!userId) {
       alert("You must be logged in to create an event.");
       return;
     }
-    const user = JSON.parse(storedUser);
-    const userID = user.id;
+    console.log("user id:", userId);
 
     const response = await fetch('http://localhost:3000/api/events/create', {
       method: 'POST',
@@ -26,8 +26,8 @@ const CreateEvent = () => {
         name: eventName,
         start_time: startTime,
         description: description,
-        scheduler: userID
-      })      
+        scheduler: userId, // replace with actual scheduler ID or name
+      }),
     });
 
     if (response.ok) {
