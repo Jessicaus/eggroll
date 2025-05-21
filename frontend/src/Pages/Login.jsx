@@ -25,7 +25,6 @@ export default function Login() {
       setErrorMsg(result.error);
     } else {
       alert("Login successful!");
-      // Save token/user info or redirect
       localStorage.setItem('access_token', result.session.access_token);
       localStorage.setItem('refresh_token', result.session.refresh_token);
       localStorage.setItem('user', JSON.stringify(result.user));
@@ -78,11 +77,3 @@ export default function Login() {
             
         </form>
         </div>);
-
-
-
-
-
-
-
-}
