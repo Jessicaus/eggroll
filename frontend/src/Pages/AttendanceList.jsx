@@ -3,8 +3,6 @@ import{ useLocation } from 'react-router-dom';
 import { supabase } from '../../supabaseClient.js';
 import './AttendanceList.css';
 
-
-
 const AttendanceList = ( ) => {
   const [searchTerm, setSearchTerm] = useState('');
   const [attendees, setAttendees] = useState([]);
@@ -77,19 +75,16 @@ const AttendanceList = ( ) => {
   }
 
   return (
-    <div className="attendance-container">
-      <div className="attendance-card">
-        <h1 className="event-title">{eventName || 'Event Attendance'}</h1>
-        <p className="total-attendees">Total Attendees: {attendees.length}</p>
-        <input
-          type="text"
-          className="search-bar"
-          placeholder="Search by name..."
-          value={searchTerm}
-          onChange={e => setSearchTerm(e.target.value)}
-        />
-
-        <div className="table-container">
+    <>
+      <div className="go-back-wrapper">
+        <a href="/home" className="go-back-link">← Go Back</a>
+      </div>
+  
+      <div className="attendance-page">
+        <h2 className="attendance-title"><strong>{eventName}</strong></h2>
+        <p className="attendance-count">Total Attendees: {attendees.length}</p>
+  
+        <div className="attendance-table-container">
           <table className="attendance-table">
             <thead>
               <tr>
@@ -99,25 +94,26 @@ const AttendanceList = ( ) => {
               </tr>
             </thead>
             <tbody>
-              {filteredAttendees.length > 0 ? (
-                filteredAttendees.map((att, idx) => (
-                  <tr key={idx}>
-                    <td>{att.name}</td>
-                    <td>{att.email}</td>
-                    <td>{new Date(att.checkInTime).toLocaleString()}</td>
-                  </tr>
-                ))
-              ) : (
-                <tr>
-                  <td colSpan="3" className="no-results">No matching attendees found.</td>
+              {attendees.map((attendee, index) => (
+                <tr key={index}>
+                  <td>{attendee.name}</td>
+                  <td>{attendee.email}</td>
+                  <td>
+                    {attendee.checkInTime
+                      ? new Date(attendee.checkInTime).toLocaleString('en-US', {
+                          dateStyle: 'medium',
+                          timeStyle: 'short' // excludes seconds
+                        })
+                      : "Not checked in"}
+                  </td>
                 </tr>
-              )}
+              ))}
             </tbody>
           </table>
         </div>
       </div>
-    </div>
+    </>
   );
-};
+}  
 
 export default AttendanceList;
