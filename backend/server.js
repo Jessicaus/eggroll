@@ -27,7 +27,7 @@ const main = async () => { const { data, error } = await supabase.from('users').
     console.error('Error:', error)
   }
   else{
-    console.log('Users:', data)
+    // console.log('Users:', data)
   }
 }
 

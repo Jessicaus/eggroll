@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import './CreateEvent.css';
 import { useAuth } from '../authContext.jsx';
 import { useNavigate } from 'react-router-dom';
 
@@ -8,6 +9,15 @@ const CreateEvent = () => {
   const [startTime, setStartTime] = useState('');
   const [description, setDescription] = useState('');
   const navigate = useNavigate();
+
+  <input
+  className="inputField"
+  type="text"
+  value={eventName}
+  onChange={e => setEventName(e.target.value)}
+  placeholder="Enter event name"
+  required
+/>
 
   const handleCreateEvent = async (e) => {
     e.preventDefault(); // prevent page reload
@@ -82,7 +92,8 @@ const CreateEvent = () => {
             borderRadius: '8px',
             border: '2px solid #ffc078',
             outline: 'none',
-            backgroundColor: '#fff'
+            backgroundColor: '#fff',
+            color: '#000'
           }}
         />
 
@@ -101,7 +112,8 @@ const CreateEvent = () => {
             borderRadius: '8px',
             border: '2px solid #ffc078',
             outline: 'none',
-            backgroundColor: '#fff'
+            backgroundColor: '#fff',
+            color: '#000'
           }}
         />
 
@@ -122,7 +134,8 @@ const CreateEvent = () => {
             border: '2px solid #ffc078',
             outline: 'none',
             resize: 'vertical',
-            backgroundColor: '#fff'
+            backgroundColor: '#fff',
+            color: '#000'
           }}
         />
 
