@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from 'react-router-dom';
 import './TopNav.css';
 const TopNav = ({toggleSidebar}) => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -75,6 +76,7 @@ const TopNav = ({toggleSidebar}) => {
           {searchResults.length > 0 && (
             <ul className="search-results">
               {searchResults.map((event) => {
+                //console.log("Rendering event with ID:", event.id); // ✅ log event ID
                 const formattedStart = new Date(event.event_start_time).toLocaleString('en-US', {
                   hour: 'numeric',
                   minute: '2-digit',
@@ -84,12 +86,14 @@ const TopNav = ({toggleSidebar}) => {
                 });
 
                 return (
-                  <li key={event.id}>
-                    <div className="search-result-row">
-                      <span className="event-name">{event.event_name}</span>
-                      <span className="event-date">{formattedStart}</span>
-                    </div>
-                  </li>
+                  <Link to={`/attendance?eventId=${event.id}`} key={event.id}>
+                    <li>
+                      <div className="search-result-row">
+                        <span className="event-name">{event.event_name}</span>
+                        <span className="event-date">{formattedStart}</span>
+                      </div>
+                    </li>
+                  </Link>
                 );
               })}
             </ul>
