@@ -84,7 +84,8 @@ const CheckIn = () => {
               borderRadius: '6px',
               border: '1.5px solid #e6a04e',
               marginBottom: '1.5rem',
-              backgroundColor: '#fffef4'
+              backgroundColor: '#fffef4',
+              color: '#000'
             }}
           />
   

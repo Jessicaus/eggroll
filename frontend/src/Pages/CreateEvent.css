@@ -1,0 +1,13 @@
+/* styles.css */
+.inputField {
+    width: 100%;
+    padding: 0.75rem;
+    margin: 0.5rem 0 1.5rem;
+    font-size: 1rem;
+    border-radius: 8px;
+    border: 2px solid #ffc078;
+    outline: none;
+    background-color: #fff;
+    color: #000;           /* make sure text is black */
+  }
+  
