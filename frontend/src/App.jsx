@@ -24,9 +24,7 @@ function App() {
         <Route path="/signup" element={<Register />} />
         <Route path="/home" element={<Home />} />
         <Route path ="/create" element = {<CreateEvent />} />
-        <Route
-  path="/attendance"
-  element={<AttendanceList eventId="ef20d4fa-14d6-4227-9fc5-025caf2f2159" />}
+        <Route path="/attendance" element={<AttendanceList />}
 />
         <Route path="/checkin" element={<CheckIn />} />
       </Routes>

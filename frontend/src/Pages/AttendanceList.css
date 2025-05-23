@@ -5,6 +5,7 @@
     padding-top: 4rem;
     background-color: #fff9f0;
     min-height: 100vh;
+
 }
 
 .attendance-card {
@@ -16,6 +17,7 @@
     max-width: 900px;
     box-shadow: 0 8px 16px rgba(255, 165, 0, 0.3);
     font-family: 'Avenir', sans-serif;
+    color: #000; 
 }
 
 .event-title {
@@ -30,7 +32,7 @@
     font-size: 1.2rem;
     color: #d9480f;
     text-align: center;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.5rem; 
 }
 
 .search-bar {
@@ -42,6 +44,7 @@
     font-size: 1rem;
     background-color: #fff;
     outline: none;
+    color: #000;   
 }
 
 .table-container {
@@ -60,6 +63,7 @@
     text-align: left;
     font-size: 1rem;
     background-color: #fff;
+    color: #000; 
 }
 
 .attendance-table th {
