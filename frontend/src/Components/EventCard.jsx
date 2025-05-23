@@ -24,11 +24,13 @@ const EventCard = ({event, viewType}) => {
             <p className="event-description">Attendance Code: <strong>{event.attendance_code}</strong></p>
           )}
         </div>
+        {viewType=="general" && (
         <div className="card-footer">
           <Link to={`/checkin?eventId=${event.id}`}>
             <button className="checkin-btn">Check In</button>
           </Link>
         </div>
+        )}
       </div>
     </main>
   );
