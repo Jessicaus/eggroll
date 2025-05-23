@@ -17,14 +17,10 @@ export default function Login() {
             body: JSON.stringify({ name, email, password })
         });
 
+        const result = await response.json();
         if (response.ok) {
             alert("Registration successful!");
-            localStorage.setItem('access_token', result.session.access_token);
-            localStorage.setItem('refresh_token', result.session.refresh_token);
-            localStorage.setItem('user', JSON.stringify(result.user));
-            navigate("/home");
         } else {
-            const result = await response.json();
             alert("Registration failed: " + result.error); // ✅ WORKS
         }
     };
