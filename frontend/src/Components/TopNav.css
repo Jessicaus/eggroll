@@ -12,7 +12,7 @@
     height: 10vh; /* Ensuring the navbar's height doesn't exceed 20% of the viewport height */
     max-height: 10vh; /* Ensure the top nav does not exceed 20% of the screen height */
     width: 100%;
-    font-family: 'Playfair Display', serif;
+    font-family: 'Avenir', serif;
   }
 
   .topnav-header {
@@ -111,7 +111,7 @@
     border-radius: 50px;
     cursor: pointer;
     transition: background-color 0.3s, transform 0.3s;
-    font-family: 'Abel', sans-serif;
+    font-family: 'Avenir', sans-serif;
     font-weight: bold;
     text-align: center;
     user-select: none;
@@ -142,6 +142,7 @@
   
 /* search bar */
 .search-container {
+  position: relative;
   flex: 1;
   display: flex;
   justify-content: center;
@@ -155,7 +156,7 @@
   font-size: 1rem;
   border: 1px solid #ccc;
   border-radius: 10px;
-  font-family: 'Abel', sans-serif;
+  font-family: 'Avenir', sans-serif;
   background-color: #fdfdd3;
   color: #5E6472;
   font-size: 1rem;
@@ -166,4 +167,54 @@
 .search-input:focus {
   box-shadow: 0 0 0 2px #fdfdd3;
   background-color: #fefecd;
+}
+
+/* Dropdown container */
+.search-results {
+  position: absolute;
+  top: 100%;       /* right below input */
+  left: 50%;       /* start from center */
+  transform: translateX(-50%); /* center dropdown under input */
+  width: calc(60% - 16px);      /* match input width */
+  max-width: 384px;
+  
+  background-color: #fafad8;
+  opacity: 0.95;
+  border: 1px solid #ccc;
+  border-top: none;
+  border-radius: 0 0 10px 10px; /* rounded bottom corners only */
+
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  max-height: 200px;
+  overflow-y: auto;
+  z-index: 1000;
+
+  transition: top 0.2s ease-in-out;
+}
+
+/* Dropdown items */
+.search-results li {
+  padding: 8px 12px;
+  border-top: 1px solid #e0e0c0; /* subtle border between items */
+  list-style: none;
+  cursor: pointer;
+  font-family: 'Avenir', sans-serif;
+  color: #5E6472;
+}
+
+.search-results li:first-child {
+  border-top: none;
+}
+
+.search-results li:hover {
+  background-color: #f0f0f0;
+  opacity: 1;
+}
+
+/* When input is focused or hovered, push dropdown down by 2px */
+.search-input:focus + .search-results{
+  top: calc(100% + 2.2px);
 }

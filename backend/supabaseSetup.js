@@ -1,4 +1,4 @@
-// Importing and Initializing the Supabase database in the backend
+// importing and Initializing the Supabase database in the backend
 import { createClient } from '@supabase/supabase-js';
 import dotenv from 'dotenv'
 import path from 'path'
