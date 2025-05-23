@@ -24,13 +24,26 @@ const EventCard = ({event, viewType}) => {
             <p className="event-description">Attendance Code: <strong>{event.attendance_code}</strong></p>
           )}
         </div>
-        {viewType=="general" && (
         <div className="card-footer">
-          <Link to={`/checkin?eventId=${event.id}`}>
-            <button className="checkin-btn">Check In</button>
-          </Link>
+        {viewType === "hosted" ? (
+          <>
+            <label className="toggle-switch">
+              <input type="checkbox" id="liveToggle" />
+              <span className="slider"></span>
+              <span className="label-text">Live</span>
+            </label>
+          </>
+        ) : viewType === "general" ? (
+          <>
+            <Link to={`/checkin?eventId=${event.id}`}>
+              <button className="checkin-btn">Check In</button>
+            </Link>
+          </>
+        ) : null }
+          <div className="view-attendance-text">
+            &gt;&gt; view Details
+          </div>
         </div>
-        )}
       </div>
     </main>
   );
