@@ -218,3 +218,26 @@
 .search-input:focus + .search-results{
   top: calc(100% + 2.2px);
 }
+
+.search-result-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.event-name {
+  font-weight: 500;
+  font-size: 0.9rem;
+  color: #333;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  max-width: 60%; /* prevent name from pushing date off screen */
+}
+
+.event-date {
+  font-size: 0.75rem;
+  color: #777;
+  white-space: nowrap;
+}

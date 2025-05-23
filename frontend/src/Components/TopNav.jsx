@@ -74,9 +74,24 @@ const TopNav = ({toggleSidebar}) => {
           {/*<img src="/search.svg" alt="Search" className="search-icon menu-logo-image" />*/}
           {searchResults.length > 0 && (
             <ul className="search-results">
-              {searchResults.map((event) => (
-                <li key={event.id}>{event.event_name}</li>
-              ))}
+              {searchResults.map((event) => {
+                const formattedStart = new Date(event.event_start_time).toLocaleString('en-US', {
+                  hour: 'numeric',
+                  minute: '2-digit',
+                  year: 'numeric',
+                  month: 'numeric',
+                  day: 'numeric',
+                });
+
+                return (
+                  <li key={event.id}>
+                    <div className="search-result-row">
+                      <span className="event-name">{event.event_name}</span>
+                      <span className="event-date">{formattedStart}</span>
+                    </div>
+                  </li>
+                );
+              })}
             </ul>
           )}
       </form>
