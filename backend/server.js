@@ -14,11 +14,9 @@ app.use(express.json());
 
 import authRoutes from './routes/authRoutes.js';
 import eventRoutes from './routes/eventRoutes.js';
-import attendanceRoutes from './routes/attendanceRoutes.js';
 
 app.use('/api/auth', authRoutes); 
 app.use('/api/events', eventRoutes);
-app.use('/api/attendance', attendanceRoutes);
 
 // Import Supabase database
 

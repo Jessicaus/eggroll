@@ -10,6 +10,10 @@ const { data: event, error: eventError } = await supabase
     if (eventError || !event) {
         return { success: false, message: 'Event not found.' };
     }
+
+    if (!event.is_live) {
+        return { success: false, message: 'Event is not live.' }; // 🟡 Live/dead check
+    }
       
     if (!event.attendance_code) {
     return { success: false, message: 'Attendance code missing from event.' };
