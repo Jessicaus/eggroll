@@ -58,14 +58,15 @@
     height:100%;
     width: 15%;
     display: flex;
-  justify-content: flex-end;
-  align-items: center;
+    flex-direction: column;
+  justify-content: center;
+  align-items: stretch;
   margin-left: auto; /* pushes it to the far right */
   }
   
   .checkin-btn {
     background-color: rgb(109, 172, 93);
-    height:100%;
+    /*height:80%;*/
     color: #fff;
     font-family: 'Avenir', sans-serif;
     font-size: 0.9rem;
@@ -78,4 +79,82 @@
   
   .checkin-btn:hover {
     background-color: rgb(125, 176, 112);
+  }
+
+  .view-attendance-text {
+  height: 10%;
+  flex: 0 0 20%;
+    align-self: center;
+  margin-top: 0.5rem;
+  padding: 0.25rem 0.6rem;
+  font-size: 0.72rem;
+  color: #fff; /* blue-500 */
+  cursor: pointer;
+  transition: text-shadow 0.2s, text-decoration 0.2s;
+
+  white-space: nowrap;         /* ✅ Prevent wrapping */
+  overflow: visible;           /* ✅ Allow overflow outside */
+  max-width: none;             /* ✅ Don't limit width */
+}
+
+.view-attendance-text:hover {
+  text-decoration: underline;
+  text-shadow: 0 0 5px #fdfdd3;
+}
+
+  /* Toggle */
+  .toggle-switch {
+    position: relative;
+    display: inline-flex;
+    align-self: center;
+    cursor: pointer;
+    user-select: none;
+  }
+  
+  .toggle-switch input {
+    display: none;
+  }
+  
+  .slider {
+    position: relative;
+    width: 60px;
+    height: 30px;
+    background-color: #ccc;
+    border-radius: 9999px;
+    transition: background-color 0.3s ease;
+    box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.4);
+  }
+  
+  .slider::before {
+    content: "";
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 24px;
+    height: 24px;
+    background-color: white;
+    border-radius: 50%;
+    transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  input:checked + .slider {
+    background-color: rgb(109, 172, 93); /* green */
+    box-shadow: 0 0 8px rgb(109, 172, 93);
+  }
+  
+  input:checked + .slider::before {
+    transform: translateX(30px);
+    background-color: white;
+    box-shadow: 0 0 5px rgb(109, 172, 93);
+  }
+  
+  .label-text {
+    margin-left: 12px;
+    font-size: 1rem;
+    color: white;
+    transition: color 0.3s ease;
+  }
+  
+  input:checked ~ .label-text {
+    text-shadow: 0 0 5px #fdfdd3;
   }
