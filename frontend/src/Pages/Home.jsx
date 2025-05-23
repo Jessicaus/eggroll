@@ -154,12 +154,8 @@ export default function Home() {
             events.map(event => (
               <EventCard
                 key={event.id}
-                eventID={event.id}
-                title={event.event_name}
-                startTime={event.event_start_time}
-                description={event.details}
-                code={viewType === "hosted" ? event.attendance_code : null}
-                {...event} // optional: pass all fields if EventCard uses them
+                event={event}
+                viewType={viewType}
               />
             ))
           )}
