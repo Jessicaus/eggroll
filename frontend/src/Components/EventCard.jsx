@@ -40,9 +40,13 @@ const EventCard = ({event, viewType}) => {
             </Link>
           </>
         ) : null }
-          <div className="view-attendance-text">
-            &gt;&gt; view Details
-          </div>
+          <>
+            <Link to={'/attendance?eventId=${event.id}'}>
+              <div className="view-attendance-text">
+                &gt;&gt; view Details
+              </div>
+            </Link>
+          </>
         </div>
       </div>
     </main>
