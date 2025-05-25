@@ -55,7 +55,7 @@ const EventCard = ({event, viewType}) => {
               <span className="label-text">Live</span>
             </label>
           </>
-        ) : viewType === "general" ? (
+        ) : viewType === "general" ? (event.is_live &&
           <>
             <Link to={`/checkin?eventId=${event.id}`}>
               <button className="checkin-btn">Check In</button>
