@@ -28,12 +28,15 @@ const CreateEvent = () => {
     }
     console.log("user id:", userId);
 
+    // Convert local datetime to UTC ISO string, which maps to timestamptz
+    const utcStartTime = new Date(startTime).toISOString();
+
     const response = await fetch('http://localhost:3000/api/events/create', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         name: eventName,
-        start_time: startTime,
+        start_time: utcStartTime,
         description: description,
         scheduler: userId, // replace with actual scheduler ID or name
       }),
