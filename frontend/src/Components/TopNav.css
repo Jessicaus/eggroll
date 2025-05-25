@@ -57,10 +57,12 @@
 }
 
   .brand { /* The brand (Event Tracker) occupies 30% of the width */
-    font-size: 1.5rem;
-    font-weight: bold;
-    text-align: left;
-    color: #FDFDD3;
+    font-family: 'Avenir', sans-serif;
+    font-size: 25px;
+    color: #2d2d2d;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
   }
   
   .nav-buttons {

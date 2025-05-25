@@ -2,6 +2,7 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { useState } from "react";
 import './Login.css';
+import logo from '../../../assets/logo.png';
 
 export default function Login() {
   const [email, setEmail] = useState('');
@@ -34,7 +35,13 @@ export default function Login() {
   };
 
   return (
-    <div className="overlay">
+    <div className="overlay" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+      <img
+        src={logo}
+        alt="EggRoll Logo"
+        style={{ width: '230px', marginBottom: '1.5rem' }}
+      />
+  
       <form onSubmit={handleLogin}>
         <div className="auth-form">
           <div className="con">
@@ -42,6 +49,7 @@ export default function Login() {
               <h2>Login</h2>
               <p>Let's get Egged together!</p>
             </header>
+  
             <div className="other">
               <input
                 className="form-input"
@@ -49,10 +57,7 @@ export default function Login() {
                 type="text"
                 placeholder="Email"
                 required
-                onChange={(e) => {
-                  setEmail(e.target.value);
-                  console.log("update email");
-                }}
+                onChange={(e) => setEmail(e.target.value)}
               />
               <br />
               <input
@@ -61,27 +66,19 @@ export default function Login() {
                 placeholder="Password"
                 id="pwd"
                 required
-                onChange={(e) => {
-                  setPassword(e.target.value);
-                  console.log("update password");
-                }}
+                onChange={(e) => setPassword(e.target.value)}
               />
               <br />
               <button type="submit" className="log-in btn">Log In</button>
             </div>
-
-            {/*<div className="buttons">
-              <button className="btn submits frgt-pass">Forgot Password</button>
-              <Link to="/signup" className="btn submits sign-up">Sign Up</Link>
-            </div>*/}
-
+  
             <div className="signup">
               <p>
                 Don’t have an account?{' '}
                 <Link to="/signup" className="signup-link">Sign up here</Link>
               </p>
             </div>
-
+  
             {errorMsg && (
               <div style={{
                 marginTop: '0.5rem',
@@ -100,6 +97,5 @@ export default function Login() {
         </div>
       </form>
     </div>
-  );
+  );  
 }
-

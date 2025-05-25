@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Link } from 'react-router-dom';
+import eggIcon from '../../../assets/egg.png';
 import './TopNav.css';
+
 const TopNav = ({toggleSidebar}) => {
   const [searchTerm, setSearchTerm] = useState("");
   const [searchResults, setSearchResults] = useState([]);
@@ -52,7 +54,10 @@ const TopNav = ({toggleSidebar}) => {
         <button className="menu-logo" onClick={toggleSidebar}>
             <img src="/menu.svg" alt="Logo" className="menu-logo-image" />
         </button>
-        <div className="brand">Egg Roll: Event Tracker</div>
+        <h1 className="brand">
+          <img src={eggIcon} alt="Egg" style={{ width: '45px', height: '50px' }} />
+          Roll: Event Tracker
+        </h1>
       </div>
 
       {/*<div className="toggle-pill-container">
