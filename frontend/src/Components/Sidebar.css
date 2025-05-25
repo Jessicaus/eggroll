@@ -34,8 +34,8 @@
   font-family: inherit;
   padding: 0.7rem 1rem;
   font-size: 1em;
-  background-color: rgb(109, 172, 93); /* Stronger green */
-  color: #ffffff;
+  background-color: #b3e5b0; /* Updated to match Sign up here button */
+  color: #000000;
   border: none;
   border-radius: 5px;
   cursor: pointer;

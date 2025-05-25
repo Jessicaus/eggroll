@@ -60,12 +60,12 @@ const CheckIn = () => {
         fontFamily: 'Avenir, sans-serif'
       }}>
         <div style={{
-          backgroundColor: '#ffcb7d',
+          backgroundColor: '#ffb357',
           borderRadius: '12px',
           padding: '2.5rem',
           width: '360px',
           boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
-          border: '2px solid #ffb347',
+          border: '2px solid #ffb357',
           textAlign: 'center'
         }}>
           <h1 style={{ color: '#5c3b00', marginBottom: '1.5rem', fontSize: '2rem', fontWeight: '800' }}>
@@ -92,8 +92,8 @@ const CheckIn = () => {
           <button
             onClick={handleSubmit}
             style={{
-              backgroundColor: '#6ca86e',
-              color: '#fff',
+              backgroundColor: '#b3e5b0',
+              color: '#000',
               border: 'none',
               borderRadius: '6px',
               padding: '0.9rem 1.8rem',
@@ -102,8 +102,8 @@ const CheckIn = () => {
               cursor: 'pointer',
               transition: 'background 0.2s ease'
             }}
-            onMouseOver={(e) => (e.target.style.backgroundColor = '#599c5c')}
-            onMouseOut={(e) => (e.target.style.backgroundColor = '#6ca86e')}
+            onMouseOver={(e) => (e.target.style.backgroundColor = '#93d496')} // darker green
+            onMouseOut={(e) => (e.target.style.backgroundColor = '#b3e5b0')}   // reset to original
           >
             Submit
           </button>
