@@ -8,7 +8,8 @@ import './Home.css';
 
 export default function Home() {
   const [sidebarVisible, setSidebarVisible] = useState(false);
-  const [userId, setUserID] = useState(null);
+  //const [userId, setUserID] = useState(null);
+  const { userId } = useAuth();
   const [events, setEvents] = useState([]);
   const [viewType, setViewType] = useState("general");
   const [loading, setLoading] = useState(true);
@@ -17,7 +18,7 @@ export default function Home() {
     setSidebarVisible(!sidebarVisible);
   };
 
-  useEffect(() => {
+  /*useEffect(() => {
     const initializeAuthSession = async () => {
       const token = localStorage.getItem('access_token');
       const refresh = localStorage.getItem('refresh_token');
@@ -38,7 +39,7 @@ export default function Home() {
     };
 
     initializeAuthSession();
-  }, []);
+  }, []);*/
 
   useEffect(() => {
     if (!userId) return;
