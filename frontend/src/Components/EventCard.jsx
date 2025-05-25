@@ -1,8 +1,25 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import {supabase} from '../../supabaseClient.js'; // or adjust path as needed
 import './EventCard.css';
 
 const EventCard = ({event, viewType}) => {
+  const [isLive, setIsLive] = useState(event.is_live);  // <- track toggle state
+
+  const handleToggle = async (e) => {
+    const newValue = e.target.checked;
+    console.log('Toggle clicked, new value:', newValue);
+    setIsLive(newValue);  // update local toggle state
+
+    const { error } = await supabase
+      .from('events')
+      .update({ is_live: newValue })
+      .eq('id', event.id);
+
+    if (error) {
+      console.error('Error updating is_live:', error);
+    }
+  };
 
   const formattedStart = new Date(event.event_start_time).toLocaleString('en-US', {
     hour: 'numeric',
@@ -28,7 +45,12 @@ const EventCard = ({event, viewType}) => {
         {viewType === "hosted" ? (
           <>
             <label className="toggle-switch">
-              <input type="checkbox" id="liveToggle" />
+            <input
+                type="checkbox"
+                id="liveToggle"
+                checked={isLive}
+                onChange={handleToggle}
+              />
               <span className="slider"></span>
               <span className="label-text">Live</span>
             </label>
@@ -41,11 +63,9 @@ const EventCard = ({event, viewType}) => {
           </>
         ) : null }
           <>
-            <Link to={`/attendance?eventId=${event.id}`}>
-              <div className="view-attendance-text">
-                &gt;&gt; view Details
-              </div>
-            </Link>
+          <Link to={`/attendance?eventId=${event.id}`}>
+            <div className="view-attendance-text">≫ View Details</div>
+          </Link>
           </>
         </div>
       </div>
