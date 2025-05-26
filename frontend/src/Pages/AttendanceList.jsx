@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import{ useLocation } from 'react-router-dom';
 import { supabase } from '../../supabaseClient.js';
+import logo from '../../../assets/egg.png';
 import './AttendanceList.css';
 
 const AttendanceList = ( ) => {
@@ -9,11 +10,9 @@ const AttendanceList = ( ) => {
   const [eventName, setEventName] = useState('');
   const [loading, setLoading] = useState(true);
 
-
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
   const eventId = queryParams.get('eventId');
-
 
   useEffect(() => {
     const fetchAttendance = async () => {
@@ -30,11 +29,9 @@ const AttendanceList = ( ) => {
         .single();
       if (eventError) console.error('Error fetching event:', eventError);
       else setEventName(eventData.event_name);
-      
 
       // Fetch attendance records joined with user info
      
-      
       const { data, error } = await supabase
       .from('attendance')
       .select(`
@@ -75,7 +72,26 @@ const AttendanceList = ( ) => {
   }
 
   return (
-    <>
+    <div
+      style={{
+        paddingTop: '80px', // adjust as needed
+        backgroundColor: '#fff9db',
+        minHeight: '100vh',
+      }}
+    >
+      {/* Logo on top */}
+      <img
+        src={logo}
+        alt="EggRoll Logo"
+        style={{
+          width: '100px',
+          marginBottom: '1rem',
+          display: 'block',
+          marginLeft: 'auto',
+          marginRight: 'auto',
+        }}
+      />
+      
       <div className="go-back-wrapper">
         <a href="/home" className="go-back-link">← Go Back</a>
       </div>
@@ -102,7 +118,7 @@ const AttendanceList = ( ) => {
                     {attendee.checkInTime
                       ? new Date(attendee.checkInTime).toLocaleString('en-US', {
                           dateStyle: 'medium',
-                          timeStyle: 'short' // excludes seconds
+                          timeStyle: 'short'
                         })
                       : "Not checked in"}
                   </td>
@@ -112,8 +128,8 @@ const AttendanceList = ( ) => {
           </table>
         </div>
       </div>
-    </>
+    </div>
   );
-}  
+}
 
 export default AttendanceList;

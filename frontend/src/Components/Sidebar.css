@@ -29,6 +29,7 @@
 
 .new-event-btn {
   border-radius: 8px;
+  font-style: bold;
   border: 1px solid transparent;
   transition: border-color 0.25s;
   font-family: inherit;

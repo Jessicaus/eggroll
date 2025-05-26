@@ -1,32 +1,23 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import './CreateEvent.css';
 import { useAuth } from '../authContext.jsx';
 import { useNavigate } from 'react-router-dom';
+import logo from '../../../assets/egg.png'; // Adjust path if needed
 
 const CreateEvent = () => {
-  const { userId, loading } = useAuth();
+  const { userId } = useAuth();
   const [eventName, setEventName] = useState('');
   const [startTime, setStartTime] = useState('');
   const [description, setDescription] = useState('');
   const navigate = useNavigate();
 
-  <input
-  className="inputField"
-  type="text"
-  value={eventName}
-  onChange={e => setEventName(e.target.value)}
-  placeholder="Enter event name"
-  required
-/>
-
   const handleCreateEvent = async (e) => {
-    e.preventDefault(); // prevent page reload
+    e.preventDefault();
 
     if (!userId) {
       alert("You must be logged in to create an event.");
       return;
     }
-    console.log("user id:", userId);
 
     const response = await fetch('http://localhost:3000/api/events/create', {
       method: 'POST',
@@ -35,15 +26,14 @@ const CreateEvent = () => {
         name: eventName,
         start_time: startTime,
         description: description,
-        scheduler: userId, // replace with actual scheduler ID or name
+        scheduler: userId,
       }),
     });
 
     if (response.ok) {
       alert("Event created!");
       navigate("/home");
-    } 
-    else {
+    } else {
       const result = await response.json();
       alert("Error creating event: " + result.error);
     }
@@ -52,32 +42,63 @@ const CreateEvent = () => {
   return (
     <div style={{
       display: 'flex',
-      justifyContent: 'center',
+      flexDirection: 'column',
+      justifyContent: 'flex-start', // Raise everything up
       alignItems: 'center',
+      paddingTop: '60px',
       height: '100vh',
-      backgroundColor: '#fffbe6'
+      backgroundColor: '#fff8c9',
+      fontFamily: 'Avenir, sans-serif',
     }}>
+      {/* Logo */}
+      <img
+        src={logo}
+        alt="EggRoll Logo"
+        style={{
+          width: '120px',
+          marginBottom: '1rem',
+        }}
+      />
+
+      {/* Go Back Button */}
+      <button
+        onClick={() => navigate('/home')}
+        style={{
+          marginBottom: '1rem',
+          backgroundColor: 'transparent',
+          color: '#a3684a',
+          border: 'none',
+          fontSize: '1rem',
+          cursor: 'pointer',
+          fontWeight: 'bold',
+          textDecoration: 'underline'
+        }}
+      >
+        ← Go Back
+      </button>
+
+      {/* Form */}
       <form
         onSubmit={handleCreateEvent}
         style={{
-          backgroundColor: '#ffe0b2',
-          padding: '2rem',
-          borderRadius: '16px',
-          border: '2px solid #ffa94d',
+          backgroundColor: '#FFC97C',
+          padding: '2.5rem',
+          borderRadius: '18px',
           width: '400px',
           boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)',
-          fontFamily: 'Arial, sans-serif'
         }}
       >
         <h1 style={{
-          color: '#ff7300',
-          fontSize: '1.8rem',
-          marginBottom: '1.5rem',
-          textAlign: 'center'
-        }}>Create an Event</h1>
+          color: '#a3684a',
+          fontSize: '1.9rem',
+          marginBottom: '2rem',
+          textAlign: 'center',
+          fontWeight: 800
+        }}>
+          Create an Event
+        </h1>
 
-        {/* Event Name */}
-        <label style={{ color: '#ff7300', fontWeight: 'bold' }}>Event Name</label>
+        <label style={{ color: '#a3684a', fontWeight: 'bold' }}>Event Name</label>
         <input
           type="text"
           value={eventName}
@@ -90,15 +111,13 @@ const CreateEvent = () => {
             margin: '0.5rem 0 1.5rem',
             fontSize: '1rem',
             borderRadius: '8px',
-            border: '2px solid #ffc078',
-            outline: 'none',
-            backgroundColor: '#fff',
-            color: '#000'
+            border: '1.5px solid #e6a04e',
+            backgroundColor: '#fffef4',
+            color: '#000',
           }}
         />
 
-        {/* Start Time */}
-        <label style={{ color: '#ff7300', fontWeight: 'bold' }}>Start Time</label>
+        <label style={{ color: '#a3684a', fontWeight: 'bold' }}>Start Time</label>
         <input
           type="datetime-local"
           value={startTime}
@@ -110,15 +129,13 @@ const CreateEvent = () => {
             margin: '0.5rem 0 1.5rem',
             fontSize: '1rem',
             borderRadius: '8px',
-            border: '2px solid #ffc078',
-            outline: 'none',
-            backgroundColor: '#fff',
-            color: '#000'
+            border: '1.5px solid #e6a04e',
+            backgroundColor: '#fffef4',
+            color: '#000',
           }}
         />
 
-        {/* Description */}
-        <label style={{ color: '#ff7300', fontWeight: 'bold' }}>Description</label>
+        <label style={{ color: '#a3684a', fontWeight: 'bold' }}>Description</label>
         <textarea
           value={description}
           onChange={(e) => setDescription(e.target.value)}
@@ -128,33 +145,32 @@ const CreateEvent = () => {
           style={{
             width: '100%',
             padding: '0.75rem',
-            marginBottom: '1.5rem',
+            marginBottom: '2rem',
             fontSize: '1rem',
             borderRadius: '8px',
-            border: '2px solid #ffc078',
-            outline: 'none',
+            border: '1.5px solid #e6a04e',
             resize: 'vertical',
-            backgroundColor: '#fff',
-            color: '#000'
+            backgroundColor: '#fffef4',
+            color: '#000',
           }}
         />
 
-        {/* Submit Button */}
         <button
           type="submit"
           style={{
             width: '100%',
-            padding: '0.75rem',
-            backgroundColor: '#ff7300',
-            color: '#fff',
+            padding: '0.9rem',
+            backgroundColor: '#b3e5b0',
+            color: '#000',
             border: 'none',
             borderRadius: '8px',
-            fontSize: '1rem',
+            fontSize: '1.1rem',
+            fontWeight: '600',
             cursor: 'pointer',
-            transition: 'background-color 0.3s ease'
+            transition: 'background-color 0.2s ease',
           }}
-          onMouseOver={(e) => (e.target.style.backgroundColor = '#e65c00')}
-          onMouseOut={(e) => (e.target.style.backgroundColor = '#ff7300')}
+          onMouseOver={(e) => (e.target.style.backgroundColor = '#93d496')}
+          onMouseOut={(e) => (e.target.style.backgroundColor = '#b3e5b0')}
         >
           Submit
         </button>
@@ -164,4 +180,3 @@ const CreateEvent = () => {
 };
 
 export default CreateEvent;
-

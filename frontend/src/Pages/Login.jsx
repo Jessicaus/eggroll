@@ -47,7 +47,7 @@ export default function Login() {
           <div className="con">
             <header className="head-form">
               <h2>Login</h2>
-              <p>Let's get Egged together!</p>
+              <p>Let's get egged together!</p>
             </header>
   
             <div className="other">

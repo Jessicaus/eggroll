@@ -52,7 +52,7 @@ const EventCard = ({event, viewType}) => {
                 onChange={handleToggle}
               />
               <span className="slider"></span>
-              <span className="label-text">Live</span>
+              <span className="label-text" style={{ color: 'black' }}>Live</span>
             </label>
           </>
         ) : viewType === "general" ? (
@@ -63,9 +63,9 @@ const EventCard = ({event, viewType}) => {
           </>
         ) : null }
           <>
-          <Link to={`/attendance?eventId=${event.id}`}>
-            <div className="view-attendance-text">≫ View Details</div>
-          </Link>
+            <Link to={`/attendance?eventId=${event.id}`}>
+              <div className="view-attendance-text" style={{ color: 'black' }}>≫ View Details</div>
+            </Link>
           </>
         </div>
       </div>
