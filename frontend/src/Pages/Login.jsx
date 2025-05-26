@@ -4,6 +4,9 @@ import { useState } from "react";
 import './Login.css';
 import logo from '../../../assets/logo.png';
 
+// Load API base URL from environment (Vite) or fallback to localhost:3000
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000';
+
 export default function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -14,11 +17,12 @@ export default function Login() {
     e.preventDefault();
     setErrorMsg('');
 
-    const response = await fetch('http://localhost:3000/api/auth/login', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email, password }),
-    });
+    try {
+      const response = await fetch(`${API_URL}/api/auth/login`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, password }),
+      });
 
     const result = await response.json();
 
@@ -32,7 +36,11 @@ export default function Login() {
       navigate("/home");
       window.location.reload();
     }
-  };
+  } catch (error) {
+    console.error('Login error:', error);
+    setErrorMsg('Unable to connect to the server. Please try again later.');
+  }
+};
 
   return (
     <div className="overlay" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>

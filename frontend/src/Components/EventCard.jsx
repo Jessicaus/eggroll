@@ -55,12 +55,12 @@ const EventCard = ({event, viewType}) => {
               <span className="label-text" style={{ color: 'black' }}>Live</span>
             </label>
           </>
-        ) : viewType === "general" ? (
+        ) : viewType === "general" ? ((event.is_live &&
           <>
             <Link to={`/checkin?eventId=${event.id}`}>
               <button className="checkin-btn">Check In</button>
             </Link>
-          </>
+          </>) || (!event.is_live && <div className="view-attendance-text">Event Not Live</div>)
         ) : null }
           <>
             <Link to={`/attendance?eventId=${event.id}`}>
