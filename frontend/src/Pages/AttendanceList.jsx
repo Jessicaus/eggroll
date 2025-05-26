@@ -126,7 +126,14 @@ const AttendanceList = ( ) => {
         <div className="left-panel">
           <div className="left-content">
             <h2 className="attendance-title"><strong>{event.event_name}</strong></h2>
-            <p className="attendance-count">Total Attendees: {attendees.length}</p>
+            <div className="attendance-meta">
+              <p className="attendance-count">Total Attendees: {attendees.length}</p>
+              {isHost && event.attendance_code && (
+                <p className="attendance-count">
+                  Attendance Code: <strong>{event.attendance_code}</strong>
+                </p>
+              )}
+            </div>
             {event.details && (
               <p className="event-description">{event.details}</p>
             )}

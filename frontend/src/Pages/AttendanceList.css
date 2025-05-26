@@ -86,6 +86,10 @@
     margin-bottom: 1.5rem;
   }
 
+  .attendance-meta .attendance-count {
+    margin-bottom: 0.4rem; /* smaller gap just for this section */
+  }
+
   .attended-banner {
     background-color: #FFA94D;  /* cream background */
     color: #fff7e6 ;            /* orange text */
