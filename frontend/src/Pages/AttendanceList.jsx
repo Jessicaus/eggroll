@@ -3,6 +3,7 @@ import { useAuth } from '../authContext.jsx';
 import{ useLocation } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { supabase } from '../../supabaseClient.js';
+import logo from '../../../assets/egg.png';
 import './AttendanceList.css';
 
 const AttendanceList = ( ) => {
@@ -16,11 +17,9 @@ const AttendanceList = ( ) => {
   //const [eventName, setEventName] = useState('');
   const [loading, setLoading] = useState(true);
 
-
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
   const eventId = queryParams.get('eventId');
-
 
   useEffect(() => {
     const fetchAttendance = async () => {
@@ -44,11 +43,9 @@ const AttendanceList = ( ) => {
           setIsHost(true);
         }
       }
-      
 
       // Fetch attendance records joined with user info
      
-      
       const { data, error } = await supabase
       .from('attendance')
       .select(`
@@ -116,7 +113,26 @@ const AttendanceList = ( ) => {
   }
 
   return (
-    <>
+    <div
+      style={{
+        paddingTop: '80px', // adjust as needed
+        backgroundColor: '#fff9db',
+        minHeight: '100vh',
+      }}
+    >
+      {/* Logo on top */}
+      <img
+        src={logo}
+        alt="EggRoll Logo"
+        style={{
+          width: '100px',
+          marginBottom: '1rem',
+          display: 'block',
+          marginLeft: 'auto',
+          marginRight: 'auto',
+        }}
+      />
+      
       <div className="go-back-wrapper">
         <a href="/home" className="go-back-link">← Go Back</a>
       </div>
@@ -166,15 +182,28 @@ const AttendanceList = ( ) => {
           </div>
         </div>
   
-        {/* Right Panel */}
-        <div className="right-panel">
-          <div className="attendance-table-container">
-            <table className="attendance-table">
-              <thead>
-                <tr>
-                  <th>Name</th>
-                  <th>Email</th>
-                  <th>Check-In Time</th>
+        <div className="attendance-table-container">
+          <table className="attendance-table">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Check-In Time</th>
+              </tr>
+            </thead>
+            <tbody>
+              {attendees.map((attendee, index) => (
+                <tr key={index}>
+                  <td>{attendee.name}</td>
+                  <td>{attendee.email}</td>
+                  <td>
+                    {attendee.checkInTime
+                      ? new Date(attendee.checkInTime).toLocaleString('en-US', {
+                          dateStyle: 'medium',
+                          timeStyle: 'short'
+                        })
+                      : "Not checked in"}
+                  </td>
                 </tr>
               </thead>
               <tbody>
@@ -197,8 +226,8 @@ const AttendanceList = ( ) => {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
-}  
+}
 
 export default AttendanceList;
