@@ -34,9 +34,6 @@ const CheckIn = () => {
     if (response.ok) {
       const result = await response.json();
       setMessage(result.message);
-      setTimeout(() => {
-        navigate('/home');
-      }, 2000);
     } else {
       const text = await response.text();
       console.error("Check-in failed:", text);
@@ -66,23 +63,6 @@ const CheckIn = () => {
           marginBottom: '1rem',
         }}
       />
-
-      {/* Go Back button */}
-      <button
-        onClick={() => navigate('/home')}
-        style={{
-          marginBottom: '1rem',
-          backgroundColor: 'transparent',
-          color: '#5c3b00',
-          border: 'none',
-          fontSize: '1rem',
-          cursor: 'pointer',
-          fontWeight: 'bold',
-          textDecoration: 'underline',
-        }}
-      >
-        ← Go Back
-      </button>
 
       {/* Orange check-in box */}
       <div
@@ -147,6 +127,23 @@ const CheckIn = () => {
           <p style={{ marginTop: '1rem', color: '#5c3b00' }}>{message}</p>
         )}
       </div>
+
+      {/* Bottom Go Back button */}
+      <button
+        onClick={() => navigate('/home')}
+        style={{
+          marginTop: '2rem',
+          backgroundColor: 'transparent',
+          color: '#5c3b00',
+          border: 'none',
+          fontSize: '1rem',
+          cursor: 'pointer',
+          fontWeight: 'bold',
+          textDecoration: 'underline',
+        }}
+      >
+        ← Go Back
+      </button>
     </div>
   );
 };
