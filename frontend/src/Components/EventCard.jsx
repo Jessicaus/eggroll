@@ -60,7 +60,20 @@ const EventCard = ({event, viewType}) => {
             <Link to={`/checkin?eventId=${event.id}`}>
               <button className="checkin-btn">Check In</button>
             </Link>
-          </>) || (!event.is_live && <div className="view-attendance-text">Event Not Live</div>)
+            </>) || !event.is_live && (
+              <div
+                className="view-attendance-text"
+                style={{
+                  color: 'black', // soft brown or use 'black'
+                  fontSize: 15,
+                  fontWeight: '600',
+                  textDecoration: 'none',
+                  cursor: 'default',
+                }}
+              >
+                🚫 Not Live Yet
+              </div>
+            )
         ) : null }
           <>
             <Link to={`/attendance?eventId=${event.id}`}>
