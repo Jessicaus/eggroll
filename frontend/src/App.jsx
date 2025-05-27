@@ -15,6 +15,7 @@ import CheckIn from './Pages/CheckIn';
 import { AuthProvider } from './authContext.jsx';
 
 import './App.css';
+import Logout from './Pages/Logout.jsx';
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
         <Route path="/attendance" element={<AttendanceList />}
 />
         <Route path="/checkin" element={<CheckIn />} />
+        <Route path="/logout" element={<Logout />} />
       </Routes>
     </AuthProvider>
   )
