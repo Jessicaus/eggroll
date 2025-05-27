@@ -243,3 +243,21 @@
   color: #777;
   white-space: nowrap;
 }
+
+.logout-button {
+  background-color: #B0DAA7;
+  color: #252537;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: bold;
+  font-family: 'Avenir', sans-serif;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  margin-left: 1rem;
+}
+
+.logout-button:hover {
+  background-color: #9fcd95;
+}
