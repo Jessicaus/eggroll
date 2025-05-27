@@ -107,7 +107,7 @@ const TopNav = ({toggleSidebar}) => {
 
       <button className="logout-button" onClick={() => {
         localStorage.clear();
-        window.location.href = '/logged-out';
+        window.location.href = '/logout';
       }}>
         Logout
       </button>
