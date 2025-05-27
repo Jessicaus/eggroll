@@ -56,7 +56,7 @@ const TopNav = ({toggleSidebar}) => {
         </button>
         <h1 className="brand">
           <img src={eggIcon} alt="Egg" style={{ width: '45px', height: '50px' }} />
-          Roll: Event Tracker
+          Roll<span className="brand-sub">: Event Tracker</span>
         </h1>
       </div>
 

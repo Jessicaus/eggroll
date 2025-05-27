@@ -8,6 +8,7 @@ import './Home.css';
 
 export default function Home() {
   const [sidebarVisible, setSidebarVisible] = useState(false);
+  const [shouldRenderSidebar, setShouldRenderSidebar] = useState(false);
   //const [userId, setUserID] = useState(null);
   const { userId } = useAuth();
   const [events, setEvents] = useState([]);
@@ -17,6 +18,17 @@ export default function Home() {
   const toggleSidebar = () => {
     setSidebarVisible(!sidebarVisible);
   };
+
+  useEffect(() => {
+    if (sidebarVisible) {
+      setShouldRenderSidebar(true);
+    } else {
+      const timer = setTimeout(() => {
+        setShouldRenderSidebar(false);
+      }, 300); // match duration of slideOut
+      return () => clearTimeout(timer);
+    }
+  }, [sidebarVisible]);
 
   /*useEffect(() => {
     const initializeAuthSession = async () => {
@@ -136,7 +148,18 @@ export default function Home() {
         <TopNav toggleSidebar={toggleSidebar} />
       </div>
       <div className="content">
-        <Sidebar viewType={viewType} setViewType={setViewType} />
+        {/*<Sidebar viewType={viewType} setViewType={setViewType} />*/}
+        <div className="sidebar-desktop">
+          <Sidebar viewType={viewType} setViewType={setViewType} />
+        </div>
+
+        {shouldRenderSidebar && (
+          <div className="sidebar-overlay" onClick={toggleSidebar}>
+            <div className={`sidebar-mobile ${sidebarVisible ? 'slide-in' : 'slide-out'}`} onClick={(e) => e.stopPropagation()}>
+              <Sidebar viewType={viewType} setViewType={setViewType} />
+            </div>
+          </div>
+        )}
         <div className="events">
           <div className="upcoming">Events</div>
 

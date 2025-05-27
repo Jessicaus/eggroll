@@ -1,8 +1,25 @@
+/* Full-height container that hosts the attendance page */
+.attendance-wrapper {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #fff9db;
+  padding-top: 80px;
+}
+
+/* Centered EggRoll logo at the top */
+.attendance-logo {
+  width: 100px;
+  margin: 0 auto 1rem auto; /* center horizontally with spacing below */
+  display: block;
+}
+
 .attendance-page {
-    height: 100vh;
+    /* height: 100vh; */
     padding: 24px;
     font-family: Avenir, sans-serif;
-    min-height: 100vh;
+    /* min-height: 100vh;*/
+    flex: 1;
     text-align: center;
     overflow: hidden;
   }
@@ -41,7 +58,7 @@
   .attendance-description {
     color: #555;
     font-size: 0.9rem;
-    margin: 1rem 0;
+    /*margin: 1rem 0;*/
   }
 
   .attendance-actions {
@@ -133,6 +150,7 @@
   }
   
   .attendance-table {
+    color: #555;
     width: 100%;
     max-width: 800px;
     border-collapse: collapse;

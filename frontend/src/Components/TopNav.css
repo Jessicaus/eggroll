@@ -27,6 +27,11 @@
   display: none;
 }
 
+/* Default: show full title */
+.brand-sub {
+  display: inline;
+}
+
   /* Show the menu button when the screen is smaller than 768px */
 @media (max-width: 767px) {
   .menu-logo {
@@ -40,6 +45,9 @@
     cursor: pointer;        /* Make it clickable */
     outline: none;           /* Remove outline for button focus */
     transition: filter 300ms; /* Smooth transition for hover effect */
+  }
+  .brand-sub {
+    display: none;
   }
 }
 

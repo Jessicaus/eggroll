@@ -94,17 +94,19 @@ const AttendanceList = () => {
   }
 
   return (
-    <div style={{ paddingTop: '80px', backgroundColor: '#fff9db', minHeight: '100vh' }}>
+    <div className="attendance-wrapper">
+      {/*style={{ paddingTop: '80px', backgroundColor: '#fff9db', minHeight: '100vh' }}>*/}
       <img
         src={logo}
         alt="EggRoll Logo"
-        style={{
+        className="attendance-logo"
+        /*style={{
           width: '100px',
           marginBottom: '1rem',
           display: 'block',
           marginLeft: 'auto',
           marginRight: 'auto',
-        }}
+        }}*/
       />
 
       <div className="go-back-wrapper">
@@ -132,7 +134,7 @@ const AttendanceList = () => {
             </div>
 
             {event.details && (
-              <p className="event-description">{event.details}</p>
+              <p className="attendance-description">{event.details}</p>
             )}
 
             {userAttending && (
