@@ -79,13 +79,20 @@ const AttendanceList = () => {
     const newValue = e.target.checked;
     setIsLive(newValue);
 
-    const { error } = await supabase
-      .from('events')
-      .update({ is_live: newValue })
-      .eq('id', event.id);
+    const response = await fetch('http://localhost:3000/api/events/live', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        id: event.id,
+        status: newValue
+      }),
+    });
 
-    if (error) {
-      console.error('Error updating is_live:', error);
+    if (response.ok) {
+      console.log("from frontend: livestatus successfully changed")
+    } else {
+      console.log("from frontend: livestatus change failed")
+      
     }
   };
 
