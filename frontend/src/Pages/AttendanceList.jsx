@@ -159,6 +159,7 @@ const AttendanceList = () => {
               marginTop: '2rem',
               width: '100%',
               textAlign: 'center',
+              gap: '1rem'
             }}
           >
             {isHost && (
@@ -174,7 +175,7 @@ const AttendanceList = () => {
               </label>
             )}
 
-            {!userAttending && isLive && !isHost && (
+            {!userAttending && isLive && (
               <Link to={`/checkin?eventId=${event.id}`}>
                 <button className="checkin-btn">Check In</button>
               </Link>
