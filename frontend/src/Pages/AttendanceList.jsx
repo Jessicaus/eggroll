@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useAuth } from '../authContext.jsx';
 import { useLocation, Link } from 'react-router-dom';
-import { supabase } from '../../supabaseClient.js';
 import logo from '../../../assets/egg.png';
 import './AttendanceList.css';
 
