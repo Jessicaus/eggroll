@@ -41,24 +41,20 @@ const AttendanceList = () => {
         }
       }
 
-      // Fetch attendance
-      const { data, error } = await supabase
-        .from('attendance')
-        .select(`
-          checked_in_at,
-          users (
-            user_id,
-            user_name,
-            user_email
-          )
-        `)
-        .eq('event_id', eventId)
-        .order('checked_in_at', { ascending: true });
 
-      if (error) {
-        console.error('Error fetching attendance:', error);
-        setAttendees([]);
-      } else {
+
+      // Fetch attendance
+      const response = await fetch('http://localhost:3000/api/attendance/fetch', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          eventId: eventId
+        }),
+      });
+  
+      if (response.ok) {
+        console.log("attendance fetched successfully")
+        const data = await response.json();
         const formatted = data.map(item => ({
           id: item.users.user_id,
           name: item.users.user_name,
@@ -67,6 +63,9 @@ const AttendanceList = () => {
         }));
         setAttendees(formatted);
         setUserAttending(formatted.some(a => a.id === userId));
+      } else {
+        const result = await response.json();
+        alert("error fetching attendance: " + result.error);
       }
 
       setLoading(false);
