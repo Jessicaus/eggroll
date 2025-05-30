@@ -56,7 +56,7 @@ const EventCard = ({event, viewType}) => {
             <label className="toggle-switch">
             <input
                 type="checkbox"
-                id="liveToggle"
+                id={`liveToggle-${event.id}`}
                 checked={isLive}
                 onChange={handleToggle}
               />

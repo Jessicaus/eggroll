@@ -56,7 +56,36 @@ export default function Home() {
   useEffect(() => {
     if (!userId) return;
 
-    async function fetchGeneralEvents() {
+    const fetchEvents = async () => {
+      setLoading(true);
+      try {
+        console.log("userid:", userId);
+        console.log("viewType:", viewType);
+        const response = await fetch('http://localhost:3000/api/attendance/events', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            viewType,
+            userId,
+          }),
+        });
+
+        const eventsData = await response.json();
+        console.log('Fetched events:', eventsData);
+        if (!response.ok) {
+          throw new Error(eventsData.error || 'Failed to fetch events');
+        }
+        setEvents(eventsData);
+      } catch (error) {
+        console.error("Error fetching events:", error);
+        alert("Failed to load events.");
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchEvents();
+
+    /*async function fetchGeneralEvents() {
       setLoading(true);
       const today = new Date();
       today.setHours(0, 0, 0, 0);
@@ -131,7 +160,7 @@ export default function Home() {
         break;
       default:
         fetchGeneralEvents();
-    }
+    }*/
   }, [userId, viewType]);
 
   // sort events with live ones first, then by most recent start time

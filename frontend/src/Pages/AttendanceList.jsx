@@ -25,23 +25,24 @@ const AttendanceList = () => {
       setLoading(true);
 
       // Fetch event details
-      const { data: eventData, error: eventError } = await supabase
-        .from('events')
-        .select('*')
-        .eq('id', eventId)
-        .single();
+      const eventResponse = await fetch('http://localhost:3000/api/events/searchid', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          eventId: eventId
+        }),
+      });
 
-      if (eventError) {
-        console.error('Error fetching event:', eventError);
-      } else {
-        setEvent(eventData);
-        setIsLive(eventData.is_live);
-        if (eventData.scheduler === userId) {
-          setIsHost(true);
-        }
+      const eventData = await eventResponse.json();
+      if (!eventResponse.ok) {
+        throw new Error(eventData.error);
       }
-
-
+      
+      setEvent(eventData);
+      setIsLive(eventData.is_live);
+      if (eventData.scheduler === userId) {
+        setIsHost(true);
+      }
 
       // Fetch attendance
       const response = await fetch('http://localhost:3000/api/attendance/fetch', {
