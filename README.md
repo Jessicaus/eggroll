@@ -38,7 +38,7 @@ This app was created using the following technologies:
 Here are some of the main features this app supports:
 
 <p align="left">
-  <small>Register/Login</small>
+  <small><strong>Register/Login</strong></small><br/>
   <img src="assets/login.png" alt="Login Page" width="250"/>
 </p>
 
