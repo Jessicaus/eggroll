@@ -12,6 +12,16 @@ Explore unique features such as:
 
 See our [Presentation Slides](https://docs.google.com/presentation/d/1jMU-ggGSLUYi3tL-4mMITBsmMLiqeY3Cy5ydBas7mSg/edit?usp=sharing).
 
+# How to Run
+
+Run the following command in the terminal from the directory you wish to clone this repository.
+```
+git clone https://github.com/Jessicaus/eggroll.git
+cd eggroll
+npm install
+```
+To start up the server, run `npm run dev` in the same directory. Go to http://localhost:5173/ to view the app in your browser.
+
 # Tech Stack
 
 This app was created using the following technologies:
@@ -71,13 +81,3 @@ Here are some of the main features this app supports:
   <small><strong>Search Events</strong></small><br/>
   <img src="assets/search.png" alt="Search Events" width="250"/>
 </p>
-
-# How to Run
-
-Run the following command in the terminal from the directory you wish to clone this repository.
-```
-git clone https://github.com/Jessicaus/eggroll.git
-cd eggroll
-npm install
-```
-To start up the server, run `npm run dev` in the same directory. Go to http://localhost:5173/ to view the app in your browser.
