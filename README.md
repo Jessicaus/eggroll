@@ -9,6 +9,7 @@ Explore unique features such as:
 - Toggle events between live/dead status to control when attendees can attend your event!
 - Three unique views which organize your events
 - Attendance Dashboard that changes based on your identity!
+See our [Presentation Slides](https://docs.google.com/presentation/d/1jMU-ggGSLUYi3tL-4mMITBsmMLiqeY3Cy5ydBas7mSg/edit?usp=sharing).
 
 # Tech Stack
 
