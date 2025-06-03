@@ -16,10 +16,16 @@ See our [Presentation Slides](https://docs.google.com/presentation/d/1jMU-ggGSLU
 
 This app was created using the following technologies:
 
-<div style="display: flex; justify-content: space-between; align-items: center;">
-  <img src="assets/react.png" alt="React Logo" width="250" />
-  <img src="assets/node.png" alt="Node Logo" width="250" style="margin: 0 auto;" />
-  <img src="assets/supabase.png" alt="Supabase Logo" width="250" />
+<div style="display: flex; width: 100%; align-items: center;">
+  <div style="flex: 1; text-align: left;">
+    <img src="assets/react.png" alt="React Logo" width="250" />
+  </div>
+  <div style="flex: 1; text-align: center;">
+    <img src="assets/node.png" alt="Node Logo" width="250" />
+  </div>
+  <div style="flex: 1; text-align: right;">
+    <img src="assets/supabase.png" alt="Supabase Logo" width="250" />
+  </div>
 </div>
 
 - Frontend: React + Vite
