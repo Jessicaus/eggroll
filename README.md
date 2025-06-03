@@ -20,22 +20,18 @@ This app was created using the following technologies:
   <tr>
     <td align="left" width="33%">
       <img src="assets/react.png" alt="React Logo" width="150"/><br/>
-      <p align="center"><small>React</small></p>
+      <p align="center"><small>React + Vite (Frontend)</small></p>
     </td>
     <td align="center" width="34%">
       <img src="assets/node.png" alt="Node Logo" width="150"/><br/>
-      <p align="center"><small>Node</small></p>
+      <p align="center"><small>Node.js (Backend)</small></p>
     </td>
     <td align="right" width="33%">
       <img src="assets/supabase.png" alt="Supabase Logo" width="150"/><br/>
-      <p align="center"><small>Supabase</small></p>
+      <p align="center"><small>Supabase (Database)</small></p>
     </td>
   </tr>
 </table>
-
-- Frontend: React + Vite
-- Backend: Node.js
-- Database: Supabase
 
 # How to Run
 
