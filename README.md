@@ -26,4 +26,4 @@ git clone https://github.com/Jessicaus/eggroll.git
 cd eggroll
 npm install
 ```
-To start up the server, run `npm run dev` in the same directory. Go to https://localhost:5173 to view the app in your browser.
+To start up the server, run `npm run dev` in the same directory. Go to http://localhost:5173/ to view the app in your browser.
