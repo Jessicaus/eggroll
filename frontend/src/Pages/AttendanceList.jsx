@@ -183,8 +183,7 @@ const AttendanceList = () => {
           </div>
 
         </div>
-
-        <div className="attendance-table-container">
+        {isHost && (<div className="attendance-table-container">
           <table className="attendance-table">
             <thead>
               <tr>
@@ -211,6 +210,7 @@ const AttendanceList = () => {
             </tbody>
           </table>
         </div>
+        )}
       </div>
     </div>
   );
