@@ -16,17 +16,19 @@ See our [Presentation Slides](https://docs.google.com/presentation/d/1jMU-ggGSLU
 
 This app was created using the following technologies:
 
-<div style="display: flex; width: 100%; align-items: center;">
-  <div style="flex: 1; text-align: left;">
-    <img src="assets/react.png" alt="React Logo" width="250" />
-  </div>
-  <div style="flex: 1; text-align: center;">
-    <img src="assets/node.png" alt="Node Logo" width="250" />
-  </div>
-  <div style="flex: 1; text-align: right;">
-    <img src="assets/supabase.png" alt="Supabase Logo" width="250" />
-  </div>
-</div>
+<table width="100%">
+  <tr>
+    <td align="left" width="33%">
+      <img src="assets/react.png" alt="React Logo" width="250" />
+    </td>
+    <td align="center" width="34%">
+      <img src="assets/node.png" alt="Node Logo" width="250" />
+    </td>
+    <td align="right" width="33%">
+      <img src="assets/supabase.png" alt="Supabase Logo" width="250" />
+    </td>
+  </tr>
+</table>
 
 - Frontend: React + Vite
 - Backend: Node.js
