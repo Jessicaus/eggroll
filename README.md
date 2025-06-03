@@ -16,6 +16,10 @@ See our [Presentation Slides](https://docs.google.com/presentation/d/1jMU-ggGSLU
 
 This app was created using the following technologies:
 
+<p align="left">
+  <img src="assets/react.png" alt="React Logo" width="250"/>
+</p>
+
 - Frontend: React + Vite
 - Backend: Node.js
 - Database: Supabase
