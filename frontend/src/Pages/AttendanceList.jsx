@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useAuth } from '../authContext.jsx';
 import { useLocation, Link } from 'react-router-dom';
-import { supabase } from '../../supabaseClient.js';
 import logo from '../../../assets/egg.png';
 import './AttendanceList.css';
 
@@ -160,6 +159,7 @@ const AttendanceList = () => {
               marginTop: '2rem',
               width: '100%',
               textAlign: 'center',
+              gap: '1rem'
             }}
           >
             {isHost && (
@@ -175,7 +175,7 @@ const AttendanceList = () => {
               </label>
             )}
 
-            {!userAttending && isLive && !isHost && (
+            {!userAttending && isLive && (
               <Link to={`/checkin?eventId=${event.id}`}>
                 <button className="checkin-btn">Check In</button>
               </Link>
