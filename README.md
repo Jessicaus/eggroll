@@ -38,8 +38,8 @@ This app was created using the following technologies:
 Here are some of the main features this app supports:
 
 <p align="left">
-  <img src="assets/login.png" alt="Login Page" width="250"/>
   <small>Register/Login</small>
+  <img src="assets/login.png" alt="Login Page" width="250"/>
 </p>
 
 # How to Run
