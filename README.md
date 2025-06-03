@@ -4,14 +4,26 @@
 
 # About eggroll
 
-EggRoll is a web app that lets users create and manage attendance events! Logged-in users can create events with a name and start time, and each event generates a unique attendance code. Attendees can submit this code to mark their attendance while the event is live. 
-
-# How to Run
-
-Run 'npm run dev' in terminal from root directory.
+EggRoll is a web app that lets users create and manage attendance events! Logged-in users can create events with a name and start time, and each event generates a unique attendance code. Attendees can submit this code to mark their attendance while the event is live.
+Explore unique features such as:
+- Toggle events between live/dead status to control when attendees can attend your event!
+- Three unique views which organize your events
+- Attendance Dashboard that changes based on your identity!
 
 # Tech Stack
 
+This app was created using the following technologies:
+
 - Frontend: React + Vite
-- Backend: Express.js
+- Backend: Node.js
 - Database: Supabase
+
+# How to Run
+
+Run the following command in the terminal from the directory you wish to clone this repository.
+```
+git clone https://github.com/Jessicaus/eggroll.git
+cd eggroll
+npm install
+```
+To start up the server, run `npm run dev` in the same directory. Go to https://localhost:5173 to view the app in your browser.
