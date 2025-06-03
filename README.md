@@ -33,6 +33,15 @@ This app was created using the following technologies:
   </tr>
 </table>
 
+# App Features
+
+Here are some of the main features this app supports:
+
+<p align="left">
+  <img src="assets/login.png" alt="Login Page" width="250"/>
+</p>
+<p align="left"><small>Register/Login</small></p>
+
 # How to Run
 
 Run the following command in the terminal from the directory you wish to clone this repository.
