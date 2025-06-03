@@ -24,6 +24,10 @@ This app was created using the following technologies:
   <img src="assets/node.png" alt="Node Logo" width="250"/>
 </p>
 
+<p align="right">
+  <img src="assets/supabase.png" alt="Supabase Logo" width="250"/>
+</p>
+
 - Frontend: React + Vite
 - Backend: Node.js
 - Database: Supabase
