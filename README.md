@@ -49,7 +49,7 @@ Here are some of the main features this app supports:
 
 <p align="left">
   <small><strong>Create Events</strong></small><br/>
-  <img src="assets/createevents.png" alt="Create Events" width="250"/>
+  <img src="assets/createevent.png" alt="Create Events" width="250"/>
 </p>
 
 <p align="left">
@@ -68,7 +68,7 @@ Here are some of the main features this app supports:
 </p>
 
 <p align="left">
-  <small><strong>Search Eventsn</strong></small><br/>
+  <small><strong>Search Events</strong></small><br/>
   <img src="assets/search.png" alt="Search Events" width="250"/>
 </p>
 
