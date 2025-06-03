@@ -42,6 +42,36 @@ Here are some of the main features this app supports:
   <img src="assets/login.png" alt="Login Page" width="250"/>
 </p>
 
+<p align="left">
+  <small><strong>Switch Views</strong></small><br/>
+  <img src="assets/views.png" alt="Views" width="250"/>
+</p>
+
+<p align="left">
+  <small><strong>Create Events</strong></small><br/>
+  <img src="assets/createevents.png" alt="Create Events" width="250"/>
+</p>
+
+<p align="left">
+  <small><strong>Toggle Event Status</strong></small><br/>
+  <img src="assets/eventstatus.png" alt="Event Status" width="250"/>
+</p>
+
+<p align="left">
+  <small><strong>Check Into Events</strong></small><br/>
+  <img src="assets/checkin.png" alt="Check In" width="250"/>
+</p>
+
+<p align="left">
+  <small><strong>Live Attendance Dashboard</strong></small><br/>
+  <img src="assets/attendance.png" alt="Attendance Page" width="250"/>
+</p>
+
+<p align="left">
+  <small><strong>Search Eventsn</strong></small><br/>
+  <img src="assets/search.png" alt="Search Events" width="250"/>
+</p>
+
 # How to Run
 
 Run the following command in the terminal from the directory you wish to clone this repository.
