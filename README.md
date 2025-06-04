@@ -22,6 +22,13 @@ npm install
 ```
 To start up the server, run `npm run dev` in the same directory. Go to http://localhost:5173/ to view the app in your browser.
 
+If you have a tarball (`.tgz`), unzip the tarball and go into the folder. In the folder, run
+```
+npm install
+npm run dev
+```
+Then go to http://localhost:5173/ to view the app in your browser.
+
 # Tech Stack
 
 This app was created using the following technologies:
