@@ -22,7 +22,23 @@ npm install
 ```
 To start up the server, run `npm run dev` in the same directory. Go to http://localhost:5173/ to view the app in your browser.
 
-If you have a tarball (`.tgz` or `.tar.gz`), extract it and navigate to the eggroll directory, which contains frontend and backend subdirectories. From within that folder, run
+If you have a tarball (`.tgz` or `.tar.gz`), extract it and navigate to the eggroll directory with the command 
+```
+cd eggroll
+
+```
+do
+```
+ls
+
+```
+if the output of the ls command is just eggroll, do
+```
+cd eggroll
+
+```
+again. Repeat until the output of the ls command contains frontend and backend subdirectories.
+From within that eggroll folder which contains frontend and backend subdirectories, run
 ```
 npm install
 npm run dev
