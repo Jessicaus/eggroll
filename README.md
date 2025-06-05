@@ -37,7 +37,7 @@ if the output of the ls command is just eggroll, do
 cd eggroll
 
 ```
-again. Repeat until the output of the ls command contains frontend and backend subdirectories.
+again. Repeat the ls and cd eggroll commands until the output of the ls command contains frontend and backend subdirectories.
 From within that eggroll folder which contains frontend and backend subdirectories, run
 ```
 npm install
